@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi3xhnth2riqs"]
+
+[ext_resource type="Script" path="res://system/hfsm/main_state/MAIN_STATE_SCRIPT.gd" id="1_ghue1"]
+
+[node name="DIALOG" type="Node"]
+script = ExtResource("1_ghue1")

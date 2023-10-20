@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfqqm5mmhb26s"]
+
+[ext_resource type="Script" path="res://tmp/fps_count.gd" id="1_pt4av"]
+
+[node name="fps_count" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pt4av")
+
+[node name="vbox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="vbox"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="vbox/HBoxContainer"]
+layout_mode = 2
+text = "FPS"
+
+[node name="lbl_fps" type="Label" parent="vbox/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="vbox"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="vbox/HBoxContainer2"]
+layout_mode = 2
+text = "Count"
+
+[node name="lbl_count" type="Label" parent="vbox/HBoxContainer2"]
+layout_mode = 2

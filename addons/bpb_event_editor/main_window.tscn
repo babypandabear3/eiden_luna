@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dakjafqmod0ay"]
+
+[ext_resource type="Theme" uid="uid://b5ayeuqlxvqdc" path="res://addons/bpb_event_editor/bpb_editor_theme.tres" id="1_h3h2m"]
+[ext_resource type="Script" path="res://addons/bpb_event_editor/main_window.gd" id="1_l4x5m"]
+[ext_resource type="PackedScene" uid="uid://8ql71dttposx" path="res://addons/bpb_event_editor/left_panel.tscn" id="1_tme6t"]
+[ext_resource type="PackedScene" uid="uid://dh1d0niec88s" path="res://addons/bpb_event_editor/panel_event_detail.tscn" id="3_msh88"]
+
+[node name="main_window" type="PanelContainer" groups=["bpb_event_system_main_window"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_h3h2m")
+script = ExtResource("1_l4x5m")
+
+[node name="hsplit" type="HSplitContainer" parent="."]
+layout_mode = 2
+
+[node name="left_panel" parent="hsplit" instance=ExtResource("1_tme6t")]
+layout_mode = 2
+
+[node name="panel_event_detail" parent="hsplit" instance=ExtResource("3_msh88")]
+layout_mode = 2

@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://c7g8d1t451vif"]
+
+[ext_resource type="Script" path="res://system/actor/body.gd" id="1_jtv6u"]
+[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="2_2cmex"]
+[ext_resource type="Script" path="res://tmp/MENU.gd" id="3_y8r03"]
+[ext_resource type="Script" path="res://tmp/GAMEPLAY.gd" id="4_tsret"]
+[ext_resource type="Script" path="res://tmp/GAMEPLAY_MENU.gd" id="4_vi80f"]
+[ext_resource type="Script" path="res://tmp/EVENT.gd" id="5_n05kn"]
+[ext_resource type="Script" path="res://tmp/WANDER.gd" id="7_ntqq2"]
+[ext_resource type="Script" path="res://tmp/IDLE.gd" id="8_1e5bi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vk6ck"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bg6d"]
+radius = 0.4
+height = 1.8
+
+[node name="AI_body" type="CharacterBody3D"]
+script = ExtResource("1_jtv6u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_vk6ck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8bg6d")
+
+[node name="HFSM" type="Node" parent="."]
+script = ExtResource("2_2cmex")
+default_state = "GAMEPLAY"
+body_path = NodePath("..")
+
+[node name="MENU" type="Node" parent="HFSM"]
+script = ExtResource("3_y8r03")
+default_state = "GAMEPLAY"
+
+[node name="GAMEPLAY_MENU" type="Node" parent="HFSM"]
+script = ExtResource("4_vi80f")
+
+[node name="EVENT" type="Node" parent="HFSM"]
+script = ExtResource("5_n05kn")
+
+[node name="GAMEPLAY" type="Node" parent="HFSM"]
+script = ExtResource("4_tsret")
+default_state = "IDLE"
+
+[node name="WANDER" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("7_ntqq2")
+
+[node name="IDLE" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("8_1e5bi")

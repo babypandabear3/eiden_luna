@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm7sbir6ltaad"]
+
+[ext_resource type="Script" path="res://addons/bpb_event_editor/row_event_detail.gd" id="1_6acyc"]
+
+[node name="row_event_detail" type="PanelContainer" groups=["bpb_event_system_row_event_detail"]]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_6acyc")
+
+[node name="v_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="v_container"]
+layout_mode = 2
+
+[node name="btn_del" type="Button" parent="v_container/HBoxContainer2"]
+layout_mode = 2
+text = " X "
+
+[node name="Label" type="Label" parent="v_container/HBoxContainer2"]
+layout_mode = 2
+text = "Actor"
+
+[node name="ob_actor" type="OptionButton" parent="v_container/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btn_up" type="Button" parent="v_container/HBoxContainer2"]
+layout_mode = 2
+text = " ^ "
+
+[node name="btn_down" type="Button" parent="v_container/HBoxContainer2"]
+layout_mode = 2
+text = "v"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="v_container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="v_container/HBoxContainer"]
+layout_mode = 2
+text = "Function"
+
+[node name="le_function" type="LineEdit" parent="v_container/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="chk_wait" type="CheckBox" parent="v_container"]
+layout_mode = 2
+button_pressed = true
+text = "Wait till Finished"
+
+[node name="btn_param_add" type="Button" parent="v_container"]
+layout_mode = 2
+text = "Add Parameter"
+
+[connection signal="button_down" from="v_container/HBoxContainer2/btn_del" to="." method="_on_btn_del_button_down"]
+[connection signal="item_selected" from="v_container/HBoxContainer2/ob_actor" to="." method="_on_ob_actor_item_selected"]
+[connection signal="button_down" from="v_container/HBoxContainer2/btn_up" to="." method="_on_btn_up_button_down"]
+[connection signal="button_down" from="v_container/HBoxContainer2/btn_down" to="." method="_on_btn_down_button_down"]
+[connection signal="text_changed" from="v_container/HBoxContainer/le_function" to="." method="_on_le_function_text_changed"]
+[connection signal="toggled" from="v_container/chk_wait" to="." method="_on_chk_wait_toggled"]
+[connection signal="button_down" from="v_container/btn_param_add" to="." method="_on_btn_param_add_button_down"]

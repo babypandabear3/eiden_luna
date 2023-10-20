@@ -1,0 +1,109 @@
+[gd_scene load_steps=2 format=3 uid="uid://duoyajnsw42fo"]
+
+[ext_resource type="Script" path="res://addons/bpb_placement/ui/root_normal_tab.gd" id="1_6qsvw"]
+
+[node name="RootNormal_TAB" type="PanelContainer"]
+script = ExtResource("1_6qsvw")
+
+[node name="vbox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="hbox_menu" type="HBoxContainer" parent="vbox"]
+layout_mode = 2
+
+[node name="btn_active" type="CheckButton" parent="vbox/hbox_menu"]
+layout_mode = 2
+text = "Active"
+
+[node name="btn_add_asset" type="Button" parent="vbox/hbox_menu"]
+layout_mode = 2
+text = "Add Asset"
+
+[node name="le_tab_name" type="LineEdit" parent="vbox/hbox_menu"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+placeholder_text = "tab name"
+
+[node name="Label" type="Label" parent="vbox/hbox_menu"]
+layout_mode = 2
+text = "Column"
+
+[node name="sb_column" type="SpinBox" parent="vbox/hbox_menu"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="btn_delete_this_tab" type="Button" parent="vbox/hbox_menu"]
+layout_mode = 2
+text = "Delete This Tab"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="vbox/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="vbox/HBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="chk_align_y" type="CheckBox" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Align Y"
+
+[node name="Label" type="Label" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Random Rotation"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="chk_rand_x" type="CheckBox" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[node name="chk_rand_y" type="CheckBox" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Y"
+
+[node name="chk_rand_z" type="CheckBox" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Z"
+
+[node name="Label2" type="Label" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Scale"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="sb_scale_min" type="SpinBox" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+min_value = 0.01
+step = 0.01
+value = 1.0
+
+[node name="sb_scale_max" type="SpinBox" parent="vbox/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+min_value = 0.01
+step = 0.01
+value = 1.0
+
+[node name="ItemList" type="ItemList" parent="vbox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+allow_rmb_select = true
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+item_count = 2
+item_0/text = "Remove"
+item_0/id = 0
+item_1/text = "Clear"
+item_1/id = 1
+
+[connection signal="button_down" from="vbox/hbox_menu/btn_add_asset" to="." method="_on_btn_add_asset_button_down"]
+[connection signal="text_submitted" from="vbox/hbox_menu/le_tab_name" to="." method="_on_le_tab_name_text_submitted"]
+[connection signal="value_changed" from="vbox/hbox_menu/sb_column" to="." method="_on_sb_column_value_changed"]
+[connection signal="button_down" from="vbox/hbox_menu/btn_delete_this_tab" to="." method="_on_btn_delete_this_tab_button_down"]
+[connection signal="item_clicked" from="vbox/HBoxContainer/ItemList" to="." method="_on_item_list_item_clicked"]
+[connection signal="item_selected" from="vbox/HBoxContainer/ItemList" to="." method="_on_item_list_item_selected"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4ncs7h4qnf4n"]
+
+[ext_resource type="Script" path="res://system/schedule_system/schedule_location.gd" id="1_xvaxm"]
+
+[node name="Schedule_Location" type="Marker3D"]
+script = ExtResource("1_xvaxm")

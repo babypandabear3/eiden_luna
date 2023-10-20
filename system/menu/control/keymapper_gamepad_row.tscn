@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnmwxiee1fwb7"]
+
+[ext_resource type="Script" path="res://system/menu/control/keymapper_gamepad_row.gd" id="1_wrtet"]
+
+[node name="keymapper_gamepad_row" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_wrtet")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="lbl_action" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "action"
+
+[node name="btn_event" type="Button" parent="HBoxContainer" groups=["keymapper"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Change"
+
+[node name="timer_input" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="button_down" from="HBoxContainer/btn_event" to="." method="_on_btn_event_button_down"]
+[connection signal="timeout" from="timer_input" to="." method="_on_timer_input_timeout"]

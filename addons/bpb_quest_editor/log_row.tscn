@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://v7d6mcoatpie"]
+
+[ext_resource type="Script" path="res://addons/bpb_quest_editor/log_row.gd" id="1_iy6gu"]
+
+[node name="log_row" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_iy6gu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="btn_del" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " X "
+
+[node name="lbl_id" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="te_log_text" type="TextEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+autowrap_mode = 2
+scroll_fit_content_height = true
+
+[node name="btn_up" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "^"
+
+[node name="btn_down" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "v"
+
+[connection signal="button_down" from="HBoxContainer/btn_del" to="." method="_on_btn_del_button_down"]
+[connection signal="text_changed" from="HBoxContainer/te_log_text" to="." method="_on_te_log_text_text_changed"]
+[connection signal="button_down" from="HBoxContainer/btn_up" to="." method="_on_btn_up_button_down"]
+[connection signal="button_down" from="HBoxContainer/btn_down" to="." method="_on_btn_down_button_down"]

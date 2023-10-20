@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhgru2rv2kqfu"]
+
+[ext_resource type="Script" path="res://system/actor/gravity_area.gd" id="1_p3n84"]
+
+[node name="gravity_area" type="Area3D"]
+collision_layer = 16
+collision_mask = 16
+monitoring = false
+gravity_space_override = 2
+script = ExtResource("1_p3n84")

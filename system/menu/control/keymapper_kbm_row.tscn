@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://df5f880gnw3ge"]
+
+[ext_resource type="Script" path="res://system/menu/control/keymapper_kbm_row.gd" id="1_jm4gm"]
+
+[node name="keymapper_kbm_row" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+script = ExtResource("1_jm4gm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="lbl_action" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="btn_event" type="Button" parent="HBoxContainer" groups=["keymapper"]]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="timer_input" type="Timer" parent="."]
+
+[connection signal="button_up" from="HBoxContainer/btn_event" to="." method="_on_btn_event_button_up"]
+[connection signal="timeout" from="timer_input" to="." method="_on_timer_input_timeout"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ql71dttposx"]
+
+[ext_resource type="PackedScene" uid="uid://s2umfadtbue4" path="res://addons/bpb_event_editor/panel_event.tscn" id="2_aw5y5"]
+[ext_resource type="PackedScene" uid="uid://cjjtb1d4cdoun" path="res://addons/bpb_event_editor/panel_actor.tscn" id="3_nst1v"]
+
+[node name="TabContainer" type="TabContainer"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Event" parent="." instance=ExtResource("2_aw5y5")]
+layout_mode = 2
+
+[node name="Actor" parent="." instance=ExtResource("3_nst1v")]
+visible = false
+layout_mode = 2

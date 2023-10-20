@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="Res_Event_System" load_steps=17 format=3 uid="uid://d0xnja67e2foc"]
+
+[ext_resource type="Script" path="res://addons/bpb_event_editor/res_actor.gd" id="1_wi47r"]
+[ext_resource type="Script" path="res://addons/bpb_event_editor/res_event_detail.gd" id="2_morlm"]
+[ext_resource type="Script" path="res://addons/bpb_event_editor/res_event.gd" id="3_1oj2h"]
+[ext_resource type="Script" path="res://addons/bpb_event_editor/res_event_system.gd" id="4_j3q0t"]
+
+[sub_resource type="Resource" id="Resource_n2noo"]
+script = ExtResource("1_wi47r")
+id = 0
+actor = "bbb"
+
+[sub_resource type="Resource" id="Resource_swcl5"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "aaa"
+wait_finish = true
+params = {}
+
+[sub_resource type="Resource" id="Resource_w6mw3"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "look_at"
+wait_finish = true
+params = {
+"target": "bbb"
+}
+
+[sub_resource type="Resource" id="Resource_c3csl"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "walk_to"
+wait_finish = true
+params = {
+"target": "bbb"
+}
+
+[sub_resource type="Resource" id="Resource_ymbhv"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "play_animation"
+wait_finish = true
+params = {
+"animation": "bbb"
+}
+
+[sub_resource type="Resource" id="Resource_7hr00"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "update_quest"
+wait_finish = true
+params = {
+"log_id": "bbb",
+"quest_id": "bbb"
+}
+
+[sub_resource type="Resource" id="Resource_n3vyf"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "update_inventory"
+wait_finish = true
+params = {
+"item_id": "bbb",
+"qty": "bbb"
+}
+
+[sub_resource type="Resource" id="Resource_pksgx"]
+script = ExtResource("3_1oj2h")
+id = 0
+event = "aaa"
+details = [SubResource("Resource_swcl5"), SubResource("Resource_w6mw3"), SubResource("Resource_c3csl"), SubResource("Resource_ymbhv"), SubResource("Resource_7hr00"), SubResource("Resource_n3vyf")]
+
+[sub_resource type="Resource" id="Resource_5epir"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "walk_to"
+wait_finish = true
+params = {
+"target": ""
+}
+
+[sub_resource type="Resource" id="Resource_xv8mt"]
+script = ExtResource("2_morlm")
+actor = "bbb"
+function = "play_animation"
+wait_finish = true
+params = {
+"animation": ""
+}
+
+[sub_resource type="Resource" id="Resource_6gllk"]
+script = ExtResource("2_morlm")
+actor = ""
+function = ""
+wait_finish = true
+params = {}
+
+[sub_resource type="Resource" id="Resource_egcg2"]
+script = ExtResource("3_1oj2h")
+id = 1
+event = "www"
+details = [SubResource("Resource_5epir"), SubResource("Resource_xv8mt"), SubResource("Resource_6gllk")]
+
+[resource]
+script = ExtResource("4_j3q0t")
+res_actors = [SubResource("Resource_n2noo")]
+res_events = [SubResource("Resource_pksgx"), SubResource("Resource_egcg2")]

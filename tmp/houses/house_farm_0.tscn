@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://07hkug4rdn40"]
+
+[ext_resource type="PackedScene" uid="uid://b5sirwjwrn18v" path="res://import/houses/house_farm0.glb" id="1_g2q5j"]
+
+[node name="house_farm0" instance=ExtResource("1_g2q5j")]
+
+[node name="house_farm0_" parent="." index="0"]
+transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0)

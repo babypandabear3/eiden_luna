@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpeb8hbefh8h0"]
+
+[ext_resource type="PackedScene" uid="uid://dch32qqnpfm05" path="res://addons/bpb_quest_editor/quest_panel.tscn" id="1_2pbim"]
+[ext_resource type="Script" path="res://addons/bpb_quest_editor/Hsplit.gd" id="1_7h2b7"]
+[ext_resource type="Theme" uid="uid://dvc84u8ko2uls" path="res://addons/bpb_quest_editor/bpb_editor_theme.tres" id="1_gppwg"]
+[ext_resource type="PackedScene" uid="uid://cdxbthvi7x7gj" path="res://addons/bpb_quest_editor/log_panel.tscn" id="2_pixr0"]
+
+[node name="main_window" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_gppwg")
+
+[node name="Hsplit" type="HSplitContainer" parent="."]
+layout_mode = 2
+script = ExtResource("1_7h2b7")
+
+[node name="quest_panel" parent="Hsplit" instance=ExtResource("1_2pbim")]
+layout_mode = 2
+
+[node name="log_panel" parent="Hsplit" instance=ExtResource("2_pixr0")]
+layout_mode = 2
+
+[connection signal="dragged" from="Hsplit" to="Hsplit" method="_on_dragged"]

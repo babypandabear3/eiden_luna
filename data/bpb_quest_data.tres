@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="Res_Quest_System" load_steps=13 format=3 uid="uid://djyrxbbta8he5"]
+
+[ext_resource type="Script" path="res://addons/bpb_quest_editor/res_log.gd" id="1_83rjd"]
+[ext_resource type="Script" path="res://addons/bpb_quest_editor/res_quest.gd" id="1_pr8qh"]
+[ext_resource type="Script" path="res://addons/bpb_quest_editor/res_quest_system.gd" id="2_w3txj"]
+
+[sub_resource type="Resource" id="Resource_yohgt"]
+script = ExtResource("1_83rjd")
+id = "0"
+log_text = "I'm fine
+thank you"
+
+[sub_resource type="Resource" id="Resource_c41rt"]
+script = ExtResource("1_83rjd")
+id = "1"
+log_text = "how are you today"
+
+[sub_resource type="Resource" id="Resource_bnvnd"]
+script = ExtResource("1_pr8qh")
+id = "0"
+quest_name = "ika"
+logs = [SubResource("Resource_yohgt"), SubResource("Resource_c41rt")]
+
+[sub_resource type="Resource" id="Resource_10pxo"]
+script = ExtResource("1_83rjd")
+id = "0"
+log_text = "hello
+"
+
+[sub_resource type="Resource" id="Resource_b0qfo"]
+script = ExtResource("1_pr8qh")
+id = "1"
+quest_name = "hendra"
+logs = [SubResource("Resource_10pxo")]
+
+[sub_resource type="Resource" id="Resource_5se5u"]
+script = ExtResource("1_pr8qh")
+id = "2"
+quest_name = "Ijo"
+logs = []
+
+[sub_resource type="Resource" id="Resource_mk2y5"]
+script = ExtResource("1_83rjd")
+id = "0"
+log_text = "I've arrived at Vitalia, the biggest city in the North"
+
+[sub_resource type="Resource" id="Resource_4qilt"]
+script = ExtResource("1_83rjd")
+id = "1"
+log_text = "I'm doing my best to help with people here
+Man there are so many problems"
+
+[sub_resource type="Resource" id="Resource_o3t7b"]
+script = ExtResource("1_pr8qh")
+id = "3"
+quest_name = "main : entering city"
+logs = [SubResource("Resource_mk2y5"), SubResource("Resource_4qilt")]
+
+[resource]
+script = ExtResource("2_w3txj")
+quests = [SubResource("Resource_bnvnd"), SubResource("Resource_b0qfo"), SubResource("Resource_5se5u"), SubResource("Resource_o3t7b")]

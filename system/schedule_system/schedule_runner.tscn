@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyklnb23wpd3a"]
+
+[ext_resource type="Script" path="res://system/schedule_system/schedule_runner.gd" id="1_ak08t"]
+
+[node name="Schedule_Runner" type="Node"]
+script = ExtResource("1_ak08t")

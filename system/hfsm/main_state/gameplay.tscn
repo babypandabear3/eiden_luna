@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqrbuyxndpirk"]
+
+[ext_resource type="Script" path="res://system/hfsm/main_state/MAIN_STATE_SCRIPT.gd" id="1_wrp5k"]
+
+[node name="GAMEPLAY" type="Node"]
+script = ExtResource("1_wrp5k")

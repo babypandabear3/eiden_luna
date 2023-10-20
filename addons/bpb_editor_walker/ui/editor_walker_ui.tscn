@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://6xwn7ek5nso"]
+
+[ext_resource type="Script" path="res://addons/bpb_editor_walker/ui/editor_walker_ui.gd" id="1_lfgkw"]
+
+[node name="editor_walker_ui" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_lfgkw")
+
+[node name="cb_enable_walker" type="CheckButton" parent="."]
+layout_mode = 2
+text = "Enable Walker (Ctrl + Alt + Enter)"
+
+[node name="focus_holder" type="LineEdit" parent="."]
+visible = false
+layout_mode = 2
+
+[connection signal="toggled" from="cb_enable_walker" to="." method="_on_cb_enable_walker_toggled"]

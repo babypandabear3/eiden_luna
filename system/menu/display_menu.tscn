@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://qq4nyar7wa40"]
+
+[ext_resource type="Script" path="res://system/menu/display_menu.gd" id="1_c6jle"]
+
+[node name="display_menu" type="PanelContainer"]
+offset_right = 164.0
+offset_bottom = 61.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_c6jle")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Display Settings"
+
+[node name="btn_exit" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Fullscreen Mode"
+
+[node name="chk_fullscreen" type="CheckBox" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_exit" to="." method="_on_btn_exit_button_down"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/chk_fullscreen" to="." method="_on_chk_fullscreen_toggled"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5hxagmuh8n21"]
+
+[ext_resource type="Script" path="res://addons/bpb_quest_editor/quest_row.gd" id="1_2t3nb"]
+
+[node name="quest_row" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_2t3nb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="btn_del" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " X "
+
+[node name="lbl_id" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "100"
+
+[node name="le_quest" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btn_up" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "^"
+
+[node name="btn_down" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "v"
+
+[node name="btn_edit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = " Edit "
+
+[connection signal="button_down" from="HBoxContainer/btn_del" to="." method="_on_btn_del_button_down"]
+[connection signal="text_changed" from="HBoxContainer/le_quest" to="." method="_on_le_quest_text_changed"]
+[connection signal="button_down" from="HBoxContainer/btn_up" to="." method="_on_btn_up_button_down"]
+[connection signal="button_down" from="HBoxContainer/btn_down" to="." method="_on_btn_down_button_down"]
+[connection signal="button_down" from="HBoxContainer/btn_edit" to="." method="_on_btn_edit_button_down"]

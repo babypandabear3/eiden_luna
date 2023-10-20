@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cirlpth3mhrov"]
+
+[ext_resource type="Script" path="res://system/main_menu_scene.gd" id="1_v5dsc"]
+[ext_resource type="PackedScene" uid="uid://dicoq70fgyuvq" path="res://system/menu/main_menu.tscn" id="2_j1ogt"]
+[ext_resource type="PackedScene" uid="uid://brivckyjfjwuy" path="res://system/menu/option_menu.tscn" id="3_u5uba"]
+[ext_resource type="PackedScene" uid="uid://mc62345awx58" path="res://system/menu/control/control_menu.tscn" id="4_0j6qi"]
+[ext_resource type="PackedScene" uid="uid://qq4nyar7wa40" path="res://system/menu/display_menu.tscn" id="5_b2662"]
+[ext_resource type="PackedScene" uid="uid://eb7ny6g23qs7" path="res://system/menu/audio_menu.tscn" id="6_loiky"]
+[ext_resource type="PackedScene" uid="uid://c7s3xrjnnoypl" path="res://system/menu/save_load/profile_new.tscn" id="7_0auqn"]
+
+[node name="main_menu_scene" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_v5dsc")
+top_menu_path = NodePath("main_menu")
+
+[node name="main_menu" parent="." instance=ExtResource("2_j1ogt")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="option_menu" parent="." instance=ExtResource("3_u5uba")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="control_menu" parent="." instance=ExtResource("4_0j6qi")]
+layout_mode = 2
+
+[node name="display_menu" parent="." instance=ExtResource("5_b2662")]
+layout_mode = 2
+
+[node name="audio_menu" parent="." instance=ExtResource("6_loiky")]
+layout_mode = 2
+
+[node name="profile_new" parent="." instance=ExtResource("7_0auqn")]
+layout_mode = 2

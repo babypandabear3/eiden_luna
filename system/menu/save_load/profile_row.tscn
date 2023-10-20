@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c4oukprlrxmea"]
+
+[node name="profile_row" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="lbl_profile" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="btn_ok" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Load"

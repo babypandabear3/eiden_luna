@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bno7js7g1m0mc"]
+
+[ext_resource type="Script" path="res://system/actor/body.gd" id="1_8nu26"]
+
+[node name="body" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_8nu26")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh1d0niec88s"]
+
+[ext_resource type="Script" path="res://addons/bpb_event_editor/panel_event_detail.gd" id="1_ya0uk"]
+
+[node name="panel_event_detail" type="PanelContainer" groups=["bpb_event_system_panel_event_detail"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ya0uk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="lbl_event" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="btn_generic" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Generic"
+
+[node name="btn_look" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Look"
+
+[node name="btn_walk" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Walk"
+
+[node name="btn_anim" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Anim"
+
+[node name="btn_quest" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Quest"
+
+[node name="btn_inventory" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="event_detail_container" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_generic" to="." method="_on_btn_generic_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_look" to="." method="_on_btn_look_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_walk" to="." method="_on_btn_walk_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_anim" to="." method="_on_btn_anim_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_quest" to="." method="_on_btn_quest_button_down"]
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_inventory" to="." method="_on_btn_inventory_button_down"]

@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://3w1gujwbjvri"]
+
+[ext_resource type="Script" path="res://system/hfsm/NPC_STATE/script/SCHEDULE.gd" id="1_dvi1b"]
+[ext_resource type="Script" path="res://system/schedule_system/res_schedule_task.gd" id="2_owics"]
+
+[sub_resource type="Resource" id="Resource_n3cjv"]
+script = ExtResource("2_owics")
+task = 0
+location = 0
+
+[sub_resource type="Resource" id="Resource_scj3g"]
+script = ExtResource("2_owics")
+task = 1
+location = 2
+
+[sub_resource type="Resource" id="Resource_jnxsn"]
+script = ExtResource("2_owics")
+task = 1
+location = 1
+
+[sub_resource type="Resource" id="Resource_h7pqy"]
+script = ExtResource("2_owics")
+task = 1
+location = 2
+
+[sub_resource type="Resource" id="Resource_ytn6x"]
+script = ExtResource("2_owics")
+task = 1
+location = 1
+
+[sub_resource type="Resource" id="Resource_jbh64"]
+script = ExtResource("2_owics")
+task = 0
+location = 0
+
+[node name="SCHEDULE" type="Node"]
+script = ExtResource("1_dvi1b")
+task00 = SubResource("Resource_n3cjv")
+task04 = SubResource("Resource_scj3g")
+task08 = SubResource("Resource_jnxsn")
+task12 = SubResource("Resource_h7pqy")
+task16 = SubResource("Resource_ytn6x")
+task20 = SubResource("Resource_jbh64")

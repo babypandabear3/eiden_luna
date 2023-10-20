@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://qi5wc0f4gfbl"]
+
+[ext_resource type="PackedScene" uid="uid://bfqqm5mmhb26s" path="res://tmp/fps_count.tscn" id="6_xe6ee"]
+[ext_resource type="Script" path="res://addons/bpb_placement/root_node/root_basic.gd" id="7_1bcu4"]
+[ext_resource type="PackedScene" uid="uid://dxcbffebrk4mf" path="res://tmp/ply_obj/ply_vitalia_a.tscn" id="7_3skb2"]
+[ext_resource type="PackedScene" uid="uid://bsmude3h8vk6i" path="res://player/player.tscn" id="7_kast1"]
+[ext_resource type="PackedScene" uid="uid://bkog4oamutbqq" path="res://system/camera/camera_root.tscn" id="7_ymge4"]
+[ext_resource type="PackedScene" uid="uid://crx1txy486rtu" path="res://addons/bpb_editor_walker/player/editor_player.tscn" id="17_cpv7t"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_72df7"]
+vertices = PackedVector3Array(6, 0.5, -2.11363, 6, 0.5, -8.61363, -6, 0.5, -8.61363, -6, 0.5, -2.11363, 6, 0.5, 11.1364, 6, 0.5, 4.63637, -6, 0.5, 4.63637, -6, 0.5, 11.1364, -6, 0.5, 11.1364, -6, 0.5, 17.8864, 6, 0.5, 17.8864, 6, 0.5, 11.1364, 6, 0.5, 4.63637, 6, 0.5, -2.11363, -6, 0.5, -2.11363, -6, 0.5, 4.63637)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13)]
+agent_height = 2.0
+
+[node name="main_game" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+visible = false
+navigation_mesh = SubResource("NavigationMesh_72df7")
+
+[node name="fps_count" parent="." instance=ExtResource("6_xe6ee")]
+
+[node name="CameraRoot" parent="." instance=ExtResource("7_ymge4")]
+target_path = NodePath("../Player")
+
+[node name="editor_player" parent="." instance=ExtResource("17_cpv7t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80933, 0.900811, 17.4899)
+floor_snap_length = 0.3
+
+[node name="RootBasic" type="Node3D" parent="."]
+script = ExtResource("7_1bcu4")
+
+[node name="Player" parent="." instance=ExtResource("7_kast1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="ply-Vitalia-A" parent="." instance=ExtResource("7_3skb2")]

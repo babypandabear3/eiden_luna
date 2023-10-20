@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca1ki5r8k5q0u"]
+
+[ext_resource type="Script" path="res://system/schedule_system/schedule_autoload.gd" id="1_8ebsl"]
+
+[node name="Schedule_Autoload" type="Node"]
+script = ExtResource("1_8ebsl")

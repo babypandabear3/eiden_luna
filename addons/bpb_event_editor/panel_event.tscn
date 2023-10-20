@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://s2umfadtbue4"]
+
+[ext_resource type="Script" path="res://addons/bpb_event_editor/panel_event.gd" id="1_v84v3"]
+
+[node name="panel_event" type="VBoxContainer" groups=["bpb_event_system_panel_event"]]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("1_v84v3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="btn_clear" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Clear"
+
+[node name="le_event" type="LineEdit" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="btn_save" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Save New Event"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="event_container" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="button_down" from="HBoxContainer/btn_clear" to="." method="_on_btn_clear_button_down"]
+[connection signal="text_submitted" from="HBoxContainer/le_event" to="." method="_on_le_event_text_submitted"]
+[connection signal="button_down" from="HBoxContainer/btn_save" to="." method="_on_btn_save_button_down"]

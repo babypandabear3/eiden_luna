@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://mc62345awx58"]
+
+[ext_resource type="Script" path="res://system/menu/control/control_menu.gd" id="1_uoxcc"]
+[ext_resource type="PackedScene" uid="uid://bng7rilohm1l2" path="res://system/menu/control/keymapper_kbm.tscn" id="2_rqqdu"]
+[ext_resource type="PackedScene" uid="uid://b0judfon3klkv" path="res://system/menu/control/keymapper_gamepad.tscn" id="3_o8xrf"]
+
+[node name="control_menu" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_uoxcc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="btn_exit" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Keyboard_Mouse" parent="VBoxContainer/TabContainer" instance=ExtResource("2_rqqdu")]
+layout_mode = 2
+
+[node name="Gamepad" parent="VBoxContainer/TabContainer" instance=ExtResource("3_o8xrf")]
+visible = false
+layout_mode = 2
+
+[connection signal="button_down" from="VBoxContainer/HBoxContainer/btn_exit" to="." method="_on_btn_exit_button_down"]

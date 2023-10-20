@@ -1,0 +1,179 @@
+{
+    "type": "table",
+    "database": null,
+    "name": "schedule",
+    "withoutRowId": false,
+    "strict": false,
+    "ddl": "CREATE TABLE schedule (npc TEXT, h00 TEXT, h01 TEXT, h02 TEXT, h03 TEXT, h04 TEXT, h05 TEXT, h06 TEXT, h07 TEXT DEFAULT WORK, h08 TEXT, h09 TEXT, h10 TEXT, h11 TEXT, h12 TEXT DEFAULT EAT, h13 TEXT DEFAULT WORK, h14 TEXT, h15 TEXT, h16 TEXT, h17 TEXT, h18 TEXT, h19 TEXT DEFAULT DRINK, h20 TEXT, h21 TEXT, h22 TEXT DEFAULT GO_HOME, h23 TEXT, location_home TEXT, location_work TEXT);",
+    "columns": [
+        {
+            "name": "npc",
+            "type": "TEXT"
+        },
+        {
+            "name": "h00",
+            "type": "TEXT"
+        },
+        {
+            "name": "h01",
+            "type": "TEXT"
+        },
+        {
+            "name": "h02",
+            "type": "TEXT"
+        },
+        {
+            "name": "h03",
+            "type": "TEXT"
+        },
+        {
+            "name": "h04",
+            "type": "TEXT"
+        },
+        {
+            "name": "h05",
+            "type": "TEXT"
+        },
+        {
+            "name": "h06",
+            "type": "TEXT"
+        },
+        {
+            "name": "h07",
+            "type": "TEXT",
+            "constraints": [
+                {
+                    "type": "DEFAULT",
+                    "definition": "DEFAULT WORK"
+                }
+            ]
+        },
+        {
+            "name": "h08",
+            "type": "TEXT"
+        },
+        {
+            "name": "h09",
+            "type": "TEXT"
+        },
+        {
+            "name": "h10",
+            "type": "TEXT"
+        },
+        {
+            "name": "h11",
+            "type": "TEXT"
+        },
+        {
+            "name": "h12",
+            "type": "TEXT",
+            "constraints": [
+                {
+                    "type": "DEFAULT",
+                    "definition": "DEFAULT EAT"
+                }
+            ]
+        },
+        {
+            "name": "h13",
+            "type": "TEXT",
+            "constraints": [
+                {
+                    "type": "DEFAULT",
+                    "definition": "DEFAULT WORK"
+                }
+            ]
+        },
+        {
+            "name": "h14",
+            "type": "TEXT"
+        },
+        {
+            "name": "h15",
+            "type": "TEXT"
+        },
+        {
+            "name": "h16",
+            "type": "TEXT"
+        },
+        {
+            "name": "h17",
+            "type": "TEXT"
+        },
+        {
+            "name": "h18",
+            "type": "TEXT"
+        },
+        {
+            "name": "h19",
+            "type": "TEXT",
+            "constraints": [
+                {
+                    "type": "DEFAULT",
+                    "definition": "DEFAULT DRINK"
+                }
+            ]
+        },
+        {
+            "name": "h20",
+            "type": "TEXT"
+        },
+        {
+            "name": "h21",
+            "type": "TEXT"
+        },
+        {
+            "name": "h22",
+            "type": "TEXT",
+            "constraints": [
+                {
+                    "type": "DEFAULT",
+                    "definition": "DEFAULT GO_HOME"
+                }
+            ]
+        },
+        {
+            "name": "h23",
+            "type": "TEXT"
+        },
+        {
+            "name": "location_home",
+            "type": "TEXT"
+        },
+        {
+            "name": "location_work",
+            "type": "TEXT"
+        }
+    ],
+    "rows": [
+        [
+            "NPC00",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "EAT",
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            "HOME00",
+            "WORK00"
+        ]
+    ]
+}

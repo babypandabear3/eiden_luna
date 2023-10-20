@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjjceeyq3csc3"]
+
+[ext_resource type="Script" path="res://addons/day_night_cycle/sky.gd" id="1_awq8r"]
+[ext_resource type="PackedScene" uid="uid://bnfs1hu5p56tx" path="res://addons/day_night_cycle/default_world_environment.tscn" id="4_tmw0n"]
+[ext_resource type="Shader" path="res://addons/day_night_cycle/cloud_shadow.gdshader" id="5_sl3qd"]
+[ext_resource type="Script" path="res://addons/day_night_cycle/sky_control.gd" id="5_vi6r2"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pvuln"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5hg45"]
+seamless = true
+noise = SubResource("FastNoiseLite_pvuln")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ki506"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q77f2"]
+seamless = true
+noise = SubResource("FastNoiseLite_ki506")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mhmym"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sjwy0"]
+seamless = true
+noise = SubResource("FastNoiseLite_mhmym")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpo8x"]
+render_priority = 0
+shader = ExtResource("5_sl3qd")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/dissolve = 0.494
+shader_parameter/metal = 0.0
+shader_parameter/rough = 1.0
+shader_parameter/texture_dissolve = SubResource("NoiseTexture2D_sjwy0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_11hu3"]
+material = SubResource("ShaderMaterial_mpo8x")
+size = Vector2(100, 100)
+orientation = 1
+
+[node name="SKY" type="Node3D"]
+script = ExtResource("1_awq8r")
+day_time = 10.0
+clouds_cutoff = 0.5
+clouds_weight = 0.86
+use_day_time_for_shader = true
+time_scale = 1.0
+sun_base_enegry = 0.8
+moon_base_enegry = 0.6
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.920855, 0, -0.389904, 0.337667, 0.5, 0.797484, 0.194952, -0.866025, 0.460428, 0, 0, 0)
+rotation_order = 4
+light_color = Color(0.666667, 0.666667, 0.666667, 1)
+light_energy = 0.8
+light_indirect_energy = 0.0
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 5.0
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.993412, 0, -0.11459, 0.084198, 0.678312, 0.729934, 0.077728, -0.734774, 0.673844, 0, 0, 0)
+rotation_order = 4
+light_color = Color(0.482353, 0.482353, 0.482353, 1)
+light_energy = 0.6
+light_indirect_energy = 0.4
+shadow_enabled = true
+shadow_opacity = 0.25
+shadow_blur = 5.0
+directional_shadow_fade_start = 0.1
+
+[node name="sky_control" type="Node" parent="."]
+script = ExtResource("5_vi6r2")
+cloud_cutoff = SubResource("NoiseTexture2D_5hg45")
+cloud_weight = SubResource("NoiseTexture2D_q77f2")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("4_tmw0n")]
+
+[node name="cloud_shadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 20, 0)
+cast_shadow = 3
+mesh = SubResource("QuadMesh_11hu3")

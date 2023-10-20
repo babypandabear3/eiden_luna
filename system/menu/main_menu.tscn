@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dicoq70fgyuvq"]
+
+[ext_resource type="Script" path="res://system/menu/main_menu.gd" id="1_8sas7"]
+
+[node name="main_menu" type="PanelContainer"]
+offset_right = 93.0
+offset_bottom = 136.0
+script = ExtResource("1_8sas7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="btn_continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="btn_new" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="btn_load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load"
+
+[node name="btn_option" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Option"
+
+[node name="btn_exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="button_down" from="VBoxContainer/btn_continue" to="." method="_on_btn_continue_button_down"]
+[connection signal="button_down" from="VBoxContainer/btn_new" to="." method="_on_btn_new_button_down"]
+[connection signal="button_down" from="VBoxContainer/btn_load" to="." method="_on_btn_load_button_down"]
+[connection signal="button_down" from="VBoxContainer/btn_option" to="." method="_on_btn_option_button_down"]
+[connection signal="button_down" from="VBoxContainer/btn_exit" to="." method="_on_btn_exit_button_down"]

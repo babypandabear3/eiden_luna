@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="Res_Root_Normal_UI" load_steps=2 format=3 uid="uid://bu66jpvbfnrgp"]
+
+[ext_resource type="Script" path="res://addons/bpb_placement/ui/res_root_normal_ui.gd" id="1_uo3yp"]
+
+[resource]
+script = ExtResource("1_uo3yp")
+data = [{
+"align_y": true,
+"item_list_items": ["res://tmp/ai_body.tscn"],
+"itemlist_column": 2.0,
+"last_selected_path": "",
+"placement_active": false,
+"rand_rotate_x": false,
+"rand_rotate_y": false,
+"rand_rotate_z": false,
+"scale_max": 1.0,
+"scale_min": 1.0,
+"tab_name": "npc"
+}, {
+"align_y": false,
+"item_list_items": ["res://tmp/ply_obj/ply_bed.tscn", "res://tmp/ply_obj/ply_locker.tscn", "res://tmp/ply_obj/ply_locker_single.tscn", "res://tmp/ply_obj/ply_table.tscn", "res://tmp/ply_obj/ply_cupboard.tscn", "res://tmp/ply_obj/ply_church_bench.tscn", "res://tmp/ply_obj/ply_tree.tscn", "res://tmp/ply_obj/ply_goddess_statue.tscn"],
+"itemlist_column": 2.0,
+"last_selected_path": "",
+"placement_active": false,
+"rand_rotate_x": false,
+"rand_rotate_y": false,
+"rand_rotate_z": false,
+"scale_max": 1.0,
+"scale_min": 1.0,
+"tab_name": "ply mesh"
+}, {
+"align_y": false,
+"item_list_items": ["res://addons/bpb_editor_walker/player/editor_player.tscn"],
+"itemlist_column": 3.0,
+"last_selected_path": "",
+"placement_active": false,
+"rand_rotate_x": false,
+"rand_rotate_y": false,
+"rand_rotate_z": false,
+"scale_max": 1.0,
+"scale_min": 1.0,
+"tab_name": "Editor_player"
+}, {
+"align_y": false,
+"item_list_items": ["res://tmp/houses/house_farm_0.tscn", "res://tmp/houses/house_farm_1.tscn", "res://tmp/houses/house_farm_2.tscn", "res://tmp/houses/house_town_red_0.tscn", "res://tmp/houses/house_town_red_1.tscn", "res://tmp/houses/house_town_red_2.tscn", "res://tmp/houses/house_town_red_3.tscn"],
+"itemlist_column": 2.0,
+"last_selected_path": "",
+"placement_active": false,
+"rand_rotate_x": false,
+"rand_rotate_y": false,
+"rand_rotate_z": false,
+"scale_max": 1.0,
+"scale_min": 1.0,
+"tab_name": "houses"
+}]
