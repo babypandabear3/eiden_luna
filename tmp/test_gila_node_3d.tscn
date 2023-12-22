@@ -1,0 +1,65 @@
+[gd_scene load_steps=17 format=3 uid="uid://dxmw8hthc2joi"]
+
+[ext_resource type="Material" uid="uid://b4i0cps0lllg8" path="res://addons/ply/materials/debug_material_light.tres" id="1_g137w"]
+[ext_resource type="Script" path="res://addons/ply/nodes/ply.gd" id="2_c13w0"]
+[ext_resource type="Script" path="res://addons/ply/resources/ply_mesh.gd" id="3_c7cs8"]
+[ext_resource type="Material" uid="uid://b5hltcvsr8ow7" path="res://addons/ply/materials/debug_material_medium.tres" id="4_cmhdk"]
+[ext_resource type="Material" uid="uid://skrl8khxn3qq" path="res://addons/ply/materials/debug_material_dark.tres" id="5_r12ji"]
+[ext_resource type="Material" uid="uid://dacfunt7kmw4i" path="res://addons/ply/materials/debug_material_red.tres" id="6_6wyao"]
+[ext_resource type="Material" uid="uid://c3fj8shvw38ya" path="res://addons/ply/materials/debug_material_orange.tres" id="7_acrrd"]
+[ext_resource type="Material" uid="uid://dopi0ecblkm83" path="res://addons/ply/materials/debug_material_yellow.tres" id="8_f1737"]
+[ext_resource type="Material" uid="uid://f6xd80u8vkfw" path="res://addons/ply/materials/debug_material_green.tres" id="9_6ddt4"]
+[ext_resource type="Material" uid="uid://l5ph4ka5c0uq" path="res://addons/ply/materials/debug_material_blue.tres" id="10_n4cel"]
+[ext_resource type="Material" uid="uid://m4fm1mohv8oo" path="res://addons/ply/materials/debug_material_purple.tres" id="11_204ob"]
+[ext_resource type="Script" path="res://tmp/move_fwd.gd" id="12_6mr0e"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_xhn8v"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1.00001, 1),
+"attribute_data": PackedByteArray(255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0),
+"format": 34359742491,
+"index_count": 36,
+"index_data": PackedByteArray(2, 0, 3, 0, 0, 0, 0, 0, 1, 0, 2, 0, 6, 0, 7, 0, 4, 0, 4, 0, 5, 0, 6, 0, 10, 0, 11, 0, 8, 0, 8, 0, 9, 0, 10, 0, 14, 0, 15, 0, 12, 0, 12, 0, 13, 0, 14, 0, 18, 0, 19, 0, 16, 0, 16, 0, 17, 0, 18, 0, 22, 0, 23, 0, 20, 0, 20, 0, 21, 0, 22, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 63, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127)
+}]
+
+[sub_resource type="Resource" id="Resource_s5p3e"]
+script = ExtResource("3_c7cs8")
+vertexes = PackedVector3Array(-0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, -0.5, 1, 0.5)
+vertex_edges = PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)
+vertex_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+edge_vertexes = PackedInt32Array(0, 1, 1, 2, 2, 3, 3, 0, 4, 0, 5, 1, 6, 2, 7, 3, 5, 4, 6, 5, 7, 6, 4, 7)
+edge_faces = PackedInt32Array(1, 2, 1, 3, 1, 4, 1, 5, 5, 2, 2, 3, 3, 4, 4, 5, 0, 2, 0, 3, 0, 4, 0, 5)
+edge_edges = PackedInt32Array(3, 5, 0, 6, 1, 7, 2, 4, 11, 0, 8, 1, 9, 2, 10, 3, 9, 4, 10, 5, 11, 6, 8, 7)
+face_edges = PackedInt32Array(11, 0, 4, 5, 6, 7)
+face_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
+face_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tbbya"]
+data = PackedVector3Array(0.5, 1, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, 0.5, 1, -0.5, -0.5, 1, -0.5, -0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 1, -0.5, 0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 1, 0.5, -0.5, 1, 0.5, 0.5, 1, 0.5, 0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 1, 0.5, -0.5, 1, -0.5, -0.5, 1, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 1, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qmdt3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PlyMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_xhn8v")
+surface_material_override/0 = ExtResource("1_g137w")
+
+[node name="PlyEditor" type="Node" parent="PlyMesh"]
+script = ExtResource("2_c13w0")
+ply_mesh = SubResource("Resource_s5p3e")
+materials = Array[Material]([ExtResource("1_g137w"), ExtResource("4_cmhdk"), ExtResource("5_r12ji"), ExtResource("6_6wyao"), ExtResource("7_acrrd"), ExtResource("8_f1737"), ExtResource("9_6ddt4"), ExtResource("10_n4cel"), ExtResource("11_204ob")])
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PlyMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlyMesh/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_tbbya")
+
+[node name="@MeshInstance3D@44142" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.998135, 0.0116486, -0.0599269, 0, 0.981627, 0.190809, 0.0610486, -0.190453, 0.979796, -115.462, 381.714, 1959.82)
+mesh = SubResource("BoxMesh_qmdt3")
+script = ExtResource("12_6mr0e")

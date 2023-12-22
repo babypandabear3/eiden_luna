@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqxjg7w0bq21m"]
+
+[ext_resource type="PackedScene" uid="uid://b0cedi6nguqk7" path="res://import/npc/NPC03.glb" id="1_yddpr"]
+
+[node name="NPC03" instance=ExtResource("1_yddpr")]
+
+[node name="GeneralSkeleton" parent="Armature_Base_004" index="0"]
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/1/position = Vector3(0, 0.494512, 0.48109)
+bones/1/rotation = Quaternion(0, 1.00486e-14, 0, 1)
+bones/2/rotation = Quaternion(-8.79901e-10, -0.198947, 0.98001, 1.98358e-09)
+bones/3/rotation = Quaternion(2.52965e-08, 0.943743, -0.33068, -6.92671e-09)
+bones/4/rotation = Quaternion(7.37937e-14, 0.707107, -0.707107, 8.69837e-14)
+bones/5/rotation = Quaternion(0, 1, 0, 8.03887e-14)
+bones/6/rotation = Quaternion(-8.59725e-09, -0.407789, -0.913076, -4.13717e-08)
+bones/7/rotation = Quaternion(-1.80359e-08, 0.986154, -0.165829, -3.0559e-10)
+bones/8/rotation = Quaternion(-6.63358e-14, 0.707107, -0.707107, -9.44417e-14)
+bones/9/rotation = Quaternion(0, 1, 0, -8.03887e-14)
+bones/12/rotation = Quaternion(1.00583e-22, 7.10543e-15, 1.33227e-15, 1)
+bones/13/rotation = Quaternion(0, -7.10543e-15, 1.77636e-15, 1)
+bones/14/rotation = Quaternion(-1.77636e-15, -7.10543e-15, -1.5691e-15, 1)
+bones/15/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
+bones/16/rotation = Quaternion(0.205122, 0.779515, -0.556329, 0.201941)
+bones/17/rotation = Quaternion(0.188052, 0.719067, -0.171008, 0.646788)
+bones/18/rotation = Quaternion(0.0495133, -0.708156, -0.0495133, 0.702576)
+bones/20/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
+bones/21/rotation = Quaternion(0.150736, 0.796597, -0.573477, 0.117628)
+bones/22/rotation = Quaternion(0.197629, -0.683149, 0.19763, 0.674679)
+bones/23/rotation = Quaternion(0.161836, 0.697397, 0.161836, 0.679158)

@@ -1,0 +1,54 @@
+[gd_scene load_steps=14 format=3 uid="uid://dtgy11uo1jc32"]
+
+[ext_resource type="Script" path="res://system/lock_and_keys/door_keycard.gd" id="1_xq3y1"]
+[ext_resource type="PackedScene" uid="uid://l2kmt5pceodm" path="res://tmp/tmp_door_mesh.tscn" id="2_ydvi3"]
+[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="3_wb6pk"]
+[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="4_coaer"]
+[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="6_dhujc"]
+[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="7_db4li"]
+[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="8_jynty"]
+[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="9_d72y4"]
+[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="10_coj7l"]
+[ext_resource type="Script" path="res://system/lock_and_keys/STATES/DOOR_KEYCARD/DOOR_STATE.gd" id="11_jw605"]
+[ext_resource type="Script" path="res://system/lock_and_keys/STATES/DOOR_KEYCARD/OPENING.gd" id="11_w88ck"]
+[ext_resource type="Script" path="res://system/lock_and_keys/STATES/DOOR_KEYCARD/CLOSING.gd" id="12_gkngg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_78j0r"]
+radius = 3.0
+
+[node name="door_keycard" type="Area3D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_xq3y1")
+
+[node name="tmp_door_mesh" parent="." instance=ExtResource("2_ydvi3")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_78j0r")
+
+[node name="HFSM" type="Node" parent="."]
+script = ExtResource("3_wb6pk")
+default_state = "GAMEPLAY"
+
+[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("4_coaer")]
+
+[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("6_dhujc")]
+
+[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("7_db4li")]
+
+[node name="EVENT" parent="HFSM" instance=ExtResource("8_jynty")]
+
+[node name="DIALOG" parent="HFSM" instance=ExtResource("9_d72y4")]
+
+[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("10_coj7l")]
+default_state = "DOOR_STATE"
+
+[node name="DOOR_STATE" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("11_jw605")
+default_state = "CLOSING"
+
+[node name="OPENING" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+script = ExtResource("11_w88ck")
+
+[node name="CLOSING" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+script = ExtResource("12_gkngg")

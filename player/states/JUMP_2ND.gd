@@ -1,7 +1,7 @@
 extends HFSM_STATE
 
-var body : CharacterBody3D
-var model : Node3D
+var body : Body
+var model : Model_Generic
 var camera : Camera3D
 
 func entering():
@@ -9,8 +9,9 @@ func entering():
 	model = blackboard.model
 	camera = get_viewport().get_camera_3d()
 	model.play_anim("JUMP_2ND")
-	print("JUMP_2ND")
-	pass
+	model.set_anim_speed(1.4)
+	await get_tree().process_frame
+	model.queue_anim("AIRBORNE")
 	
 func working(_delta):
 	set_next_state("AIRBORNE")

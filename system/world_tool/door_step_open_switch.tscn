@@ -1,0 +1,61 @@
+[gd_scene load_steps=14 format=3 uid="uid://b5kt0cbb6dswj"]
+
+[ext_resource type="Script" path="res://system/world_tool/door_step_switch.gd" id="1_qcdct"]
+[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="2_iqvke"]
+[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="3_u27h5"]
+[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="5_mnx5y"]
+[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="6_pqsrr"]
+[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="7_w4mmw"]
+[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="8_v6x7j"]
+[ext_resource type="Script" path="res://system/hfsm/state.gd" id="9_k7oap"]
+[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="9_txk6q"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_switch/step_open/door_step_open_switch_INACTIVE.gd" id="10_0i4vs"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_switch/step_open/door_step_open_switch_ACTIVATED.gd" id="11_6kfs6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t25op"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_72gde"]
+height = 0.1
+radius = 1.0
+
+[node name="Door_Step_Open_Switch" type="Area3D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_qcdct")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_t25op")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_72gde")
+
+[node name="HFSM" type="Node" parent="."]
+script = ExtResource("2_iqvke")
+default_state = "GAMEPLAY"
+main_path = NodePath("..")
+
+[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("3_u27h5")]
+
+[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("5_mnx5y")]
+
+[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("6_pqsrr")]
+
+[node name="EVENT" parent="HFSM" instance=ExtResource("7_w4mmw")]
+
+[node name="DIALOG" parent="HFSM" instance=ExtResource("8_v6x7j")]
+
+[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("9_txk6q")]
+default_state = "STEP_OPEN"
+
+[node name="STEP_OPEN" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("9_k7oap")
+default_state = "INACTIVE"
+
+[node name="INACTIVE" type="Node" parent="HFSM/GAMEPLAY/STEP_OPEN"]
+script = ExtResource("10_0i4vs")
+
+[node name="ACTIVATED" type="Node" parent="HFSM/GAMEPLAY/STEP_OPEN"]
+script = ExtResource("11_6kfs6")

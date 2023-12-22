@@ -4,6 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://bwldxwdpi50co" path="res://addons/proton_trail/proton_trail.svg" id="2"]
 [ext_resource type="Material" path="res://addons/proton_trail/demo/sword_trail.tres" id="3"]
 
+[sub_resource type="Animation" id="Animation_aiib5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-5.8965e-07, -2.64677, 1.8326)]
+}
+
 [sub_resource type="Animation" id="1"]
 resource_name = "Swing"
 length = 2.0
@@ -19,21 +34,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -2.04095), Vector3(0, 0, 1.81731), Vector3(0, -2.89637, 1.81731)]
-}
-
-[sub_resource type="Animation" id="Animation_aiib5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-5.8965e-07, -2.64677, 1.8326)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fg6pu"]

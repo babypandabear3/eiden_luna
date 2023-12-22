@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cg4dv43trrup4"]
+
+[ext_resource type="Script" path="res://player/sensors.gd" id="1_uv1cq"]
+[ext_resource type="Script" path="res://player/keyring.gd" id="2_tias5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pt355"]
+radius = 0.3
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_omld4"]
+
+[node name="Sensors" type="Node3D"]
+script = ExtResource("1_uv1cq")
+
+[node name="foot" type="Area3D" parent="." groups=["player_foot_sensor"]]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="foot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0)
+shape = SubResource("SphereShape3D_pt355")
+
+[node name="sensor_wall_climb" type="Node3D" parent="."]
+
+[node name="ray_chest" type="RayCast3D" parent="sensor_wall_climb"]
+target_position = Vector3(0, 0, 1)
+collision_mask = 128
+
+[node name="ray_head" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+target_position = Vector3(0, 0, 1)
+collision_mask = 128
+
+[node name="ray_top" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
+collision_mask = 128
+
+[node name="ray_left" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 1, 0.5)
+collision_mask = 128
+
+[node name="ray_right" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 1, 0.5)
+collision_mask = 128
+
+[node name="sensor_ledge_hanging" type="Node3D" parent="."]
+
+[node name="ray_chest" type="RayCast3D" parent="sensor_ledge_hanging"]
+target_position = Vector3(0, 0, 1)
+
+[node name="ray_head" type="RayCast3D" parent="sensor_ledge_hanging"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+target_position = Vector3(0, 0, 1)
+
+[node name="ray_ledge_top" type="RayCast3D" parent="sensor_ledge_hanging"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
+
+[node name="ray_ledge_left" type="RayCast3D" parent="sensor_ledge_hanging"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
+target_position = Vector3(0.4, 0, 0)
+
+[node name="ray_ledge_right" type="RayCast3D" parent="sensor_ledge_hanging"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)
+target_position = Vector3(-0.4, 0, 0)
+
+[node name="keyring" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("2_tias5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="keyring"]
+shape = SubResource("SphereShape3D_omld4")
+
+[connection signal="area_entered" from="foot" to="." method="_on_foot_area_entered"]
+[connection signal="area_exited" from="foot" to="." method="_on_foot_area_exited"]

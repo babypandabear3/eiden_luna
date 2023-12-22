@@ -27,3 +27,4 @@ func instance_random_npc(): #THIS METHOD SHOULD BE DELETED LATER ON
 			obj.position = pos
 			get_parent().add_child(obj)
 			lbl_count.text = str(ai_body_count)
+

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkmqiif2x76uv"]
+
+[ext_resource type="Script" path="res://addons/skeleton3dqol/skeleton_getup_maker.gd" id="1_ufn1p"]
+
+[node name="Skeleton_Getup_maker" type="Node3D"]
+script = ExtResource("1_ufn1p")
+tween_time = 0.2

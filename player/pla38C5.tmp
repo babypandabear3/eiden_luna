@@ -1,0 +1,133 @@
+[gd_scene load_steps=27 format=3 uid="uid://bsmude3h8vk6i"]
+
+[ext_resource type="Script" path="res://system/actor/body.gd" id="1_66flj"]
+[ext_resource type="Script" path="res://system/smooth_move/smooth_move.gd" id="2_2pq0h"]
+[ext_resource type="Script" path="res://system/actor/model_generic.gd" id="3_ub1ev"]
+[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="4_abi35"]
+[ext_resource type="PackedScene" uid="uid://cu6nyh13eew2n" path="res://model/eiden/eiden-model.tscn" id="4_bg8qy"]
+[ext_resource type="PackedScene" uid="uid://cg4dv43trrup4" path="res://player/sensors.tscn" id="5_es4sx"]
+[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="5_hne5u"]
+[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="7_7xsmm"]
+[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="8_dq5aq"]
+[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="9_rpxv6"]
+[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="10_wnut0"]
+[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="11_tsnlm"]
+[ext_resource type="Script" path="res://player/states/IDLE.gd" id="13_svtwp"]
+[ext_resource type="Script" path="res://player/states/JUMP.gd" id="14_5jwrm"]
+[ext_resource type="Script" path="res://player/states/AIRBORNE.gd" id="15_145um"]
+[ext_resource type="Script" path="res://player/states/JUMP_2ND.gd" id="15_wb7of"]
+[ext_resource type="Script" path="res://player/states/WALLJUMP.gd" id="16_lwwon"]
+[ext_resource type="Script" path="res://player/states/AIRBORNE_FWD.gd" id="17_vi10i"]
+[ext_resource type="Script" path="res://player/states/WALL_LANDED.gd" id="19_8khg0"]
+[ext_resource type="Script" path="res://player/states/HANGING_ENTER.gd" id="19_axask"]
+[ext_resource type="Script" path="res://player/states/HANGING.gd" id="20_4h0b3"]
+[ext_resource type="Script" path="res://player/states/HANGING_MLEFT.gd" id="21_74s7y"]
+[ext_resource type="Script" path="res://player/states/HANGING_MRIGHT.gd" id="22_fpf2j"]
+[ext_resource type="Script" path="res://player/states/HANGING_CLIMB_UP.gd" id="24_5na4n"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_72vle"]
+radius = 0.3
+height = 1.6
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_0g22u"]
+length = 0.9
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_66flj")
+use_custom_gravity = true
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+height = 2.0
+
+[node name="col-body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("CapsuleShape3D_72vle")
+
+[node name="col-leg0" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.2, 0, -0.2)
+shape = SubResource("SeparationRayShape3D_0g22u")
+
+[node name="col-leg1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.2, 0, 0.2)
+shape = SubResource("SeparationRayShape3D_0g22u")
+
+[node name="col-leg2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.2, 0, 0.2)
+shape = SubResource("SeparationRayShape3D_0g22u")
+
+[node name="col-leg3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.2, 0, -0.2)
+shape = SubResource("SeparationRayShape3D_0g22u")
+
+[node name="Smooth_Move" type="Node3D" parent="."]
+script = ExtResource("2_2pq0h")
+
+[node name="Model_Generic" type="Node3D" parent="Smooth_Move"]
+script = ExtResource("3_ub1ev")
+rotation_speed = 0.2
+
+[node name="eiden" parent="Smooth_Move/Model_Generic" instance=ExtResource("4_bg8qy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+
+[node name="Sensors" parent="Smooth_Move/Model_Generic" instance=ExtResource("5_es4sx")]
+state_machine_path = NodePath("../../../HFSM")
+
+[node name="HFSM" type="Node" parent="."]
+script = ExtResource("4_abi35")
+default_state = "GAMEPLAY"
+main_path = NodePath("..")
+main_is_body = true
+model_path = NodePath("../Smooth_Move/Model_Generic")
+navagent_path = NodePath("../NavigationAgent3D")
+
+[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("5_hne5u")]
+
+[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("7_7xsmm")]
+
+[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("8_dq5aq")]
+
+[node name="EVENT" parent="HFSM" instance=ExtResource("9_rpxv6")]
+
+[node name="DIALOG" parent="HFSM" instance=ExtResource("10_wnut0")]
+
+[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("11_tsnlm")]
+default_state = "GROUNDED"
+
+[node name="GROUNDED" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("13_svtwp")
+
+[node name="JUMP" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("14_5jwrm")
+
+[node name="AIRBORNE" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("15_145um")
+
+[node name="JUMP_2ND" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("15_wb7of")
+
+[node name="WALLJUMP" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("16_lwwon")
+
+[node name="AIRBORNE_FWD" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("17_vi10i")
+
+[node name="WALL_LANDED" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("19_8khg0")
+
+[node name="HANGING_ENTER" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("19_axask")
+default_state = "HANGING"
+
+[node name="HANGING" type="Node" parent="HFSM/GAMEPLAY/HANGING_ENTER"]
+script = ExtResource("20_4h0b3")
+
+[node name="HANGING_MLEFT" type="Node" parent="HFSM/GAMEPLAY/HANGING_ENTER"]
+script = ExtResource("21_74s7y")
+
+[node name="HANGING_MRIGHT" type="Node" parent="HFSM/GAMEPLAY/HANGING_ENTER"]
+script = ExtResource("22_fpf2j")
+
+[node name="HANGING_CLIMB_UP" type="Node" parent="HFSM/GAMEPLAY/HANGING_ENTER"]
+script = ExtResource("24_5na4n")

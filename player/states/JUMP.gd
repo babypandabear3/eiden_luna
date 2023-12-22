@@ -1,7 +1,7 @@
 extends HFSM_STATE
 
-var body : CharacterBody3D
-var model : Node3D
+var body : Body
+var model : Model_Generic
 var camera : Camera3D
 
 func entering():

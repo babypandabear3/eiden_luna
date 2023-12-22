@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://qi5wc0f4gfbl"]
+[gd_scene load_steps=7 format=3 uid="uid://qi5wc0f4gfbl"]
 
-[ext_resource type="PackedScene" uid="uid://bfqqm5mmhb26s" path="res://tmp/fps_count.tscn" id="6_xe6ee"]
+[ext_resource type="PackedScene" uid="uid://go07shbp455l" path="res://game/dungeon/tower_to_flower_garden.tscn" id="5_rxcef"]
 [ext_resource type="Script" path="res://addons/bpb_placement/root_node/root_basic.gd" id="7_1bcu4"]
-[ext_resource type="PackedScene" uid="uid://dxcbffebrk4mf" path="res://tmp/ply_obj/ply_vitalia_a.tscn" id="7_3skb2"]
 [ext_resource type="PackedScene" uid="uid://bsmude3h8vk6i" path="res://player/player.tscn" id="7_kast1"]
 [ext_resource type="PackedScene" uid="uid://bkog4oamutbqq" path="res://system/camera/camera_root.tscn" id="7_ymge4"]
 [ext_resource type="PackedScene" uid="uid://crx1txy486rtu" path="res://addons/bpb_editor_walker/player/editor_player.tscn" id="17_cpv7t"]
@@ -18,19 +17,17 @@ agent_height = 2.0
 visible = false
 navigation_mesh = SubResource("NavigationMesh_72df7")
 
-[node name="fps_count" parent="." instance=ExtResource("6_xe6ee")]
-
 [node name="CameraRoot" parent="." instance=ExtResource("7_ymge4")]
 target_path = NodePath("../Player")
 
 [node name="editor_player" parent="." instance=ExtResource("17_cpv7t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80933, 0.900811, 17.4899)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.545532, 0.900835, 5.07429)
 floor_snap_length = 0.3
 
 [node name="RootBasic" type="Node3D" parent="."]
 script = ExtResource("7_1bcu4")
 
 [node name="Player" parent="." instance=ExtResource("7_kast1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.451698, 1.12798, 0.276401)
 
-[node name="ply-Vitalia-A" parent="." instance=ExtResource("7_3skb2")]
+[node name="Tower_to_flower_garden" parent="." instance=ExtResource("5_rxcef")]

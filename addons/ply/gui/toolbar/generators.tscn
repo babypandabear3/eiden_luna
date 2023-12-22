@@ -5,7 +5,7 @@
 [sub_resource type="ButtonGroup" id="ButtonGroup_tn634"]
 
 [node name="Generators" type="AcceptDialog"]
-script = ExtResource( "2" )
+script = ExtResource("2")
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,28 +44,28 @@ offset_bottom = 549.0
 [node name="Plane" type="CheckBox" parent="C/C/Generators/C"]
 offset_right = 236.0
 offset_bottom = 24.0
-button_group = SubResource( "ButtonGroup_tn634" )
+button_group = SubResource("ButtonGroup_tn634")
 text = "Plane"
 
 [node name="Cube" type="CheckBox" parent="C/C/Generators/C"]
 offset_top = 28.0
 offset_right = 236.0
 offset_bottom = 52.0
-button_group = SubResource( "ButtonGroup_tn634" )
+button_group = SubResource("ButtonGroup_tn634")
 text = "Cube"
 
 [node name="Icosphere" type="CheckBox" parent="C/C/Generators/C"]
 offset_top = 56.0
 offset_right = 236.0
 offset_bottom = 80.0
-button_group = SubResource( "ButtonGroup_tn634" )
+button_group = SubResource("ButtonGroup_tn634")
 text = "Icosphere"
 
 [node name="Cylinder" type="CheckBox" parent="C/C/Generators/C"]
 offset_top = 84.0
 offset_right = 236.0
 offset_bottom = 108.0
-button_group = SubResource( "ButtonGroup_tn634" )
+button_group = SubResource("ButtonGroup_tn634")
 text = "Cylinder"
 
 [node name="Settings" type="PanelContainer" parent="C/C"]

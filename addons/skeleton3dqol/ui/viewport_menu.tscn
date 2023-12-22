@@ -1,0 +1,154 @@
+[gd_scene load_steps=3 format=3 uid="uid://bay5327agwfrs"]
+
+[ext_resource type="Script" path="res://addons/skeleton3dqol/ui/viewport_menu.gd" id="1_g6b2x"]
+[ext_resource type="PackedScene" uid="uid://dt1wucwead8k4" path="res://addons/skeleton3dqol/ui/skeleton_preset.tscn" id="2_norlu"]
+
+[node name="viewport_menu" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g6b2x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="btn_humanoid_ragdoll" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Make Ragdoll"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="btn_hide_ragdoll" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Hide"
+
+[node name="btn_show_ragdoll" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "show"
+
+[node name="radius_setting" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="radius_setting"]
+layout_mode = 2
+text = "Head Radius"
+
+[node name="sb_head_radius" type="SpinBox" parent="radius_setting"]
+layout_mode = 2
+step = 0.01
+value = 0.5
+
+[node name="Label2" type="Label" parent="radius_setting"]
+layout_mode = 2
+text = "Arm Radius"
+
+[node name="sb_arm_radius" type="SpinBox" parent="radius_setting"]
+layout_mode = 2
+step = 0.01
+value = 0.1
+
+[node name="Label4" type="Label" parent="radius_setting"]
+layout_mode = 2
+text = "Leg Radius"
+
+[node name="sb_leg_radius" type="SpinBox" parent="radius_setting"]
+layout_mode = 2
+step = 0.01
+value = 0.12
+
+[node name="height_setting" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="height_setting"]
+layout_mode = 2
+text = "Hand Height"
+
+[node name="sb_hand_height" type="SpinBox" parent="height_setting"]
+layout_mode = 2
+step = 0.01
+value = 0.36
+
+[node name="Label2" type="Label" parent="height_setting"]
+layout_mode = 2
+text = "Foot Height"
+
+[node name="sb_foot_height" type="SpinBox" parent="height_setting"]
+layout_mode = 2
+step = 0.01
+value = 0.4
+
+[node name="hinge_joint_setting" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 3
+
+[node name="Label" type="Label" parent="hinge_joint_setting"]
+layout_mode = 2
+text = "Elbow Angle"
+
+[node name="sb_elbow_upper" type="SpinBox" parent="hinge_joint_setting"]
+layout_mode = 2
+min_value = -180.0
+max_value = 180.0
+step = 0.01
+value = 120.0
+
+[node name="sb_elbow_lower" type="SpinBox" parent="hinge_joint_setting"]
+layout_mode = 2
+min_value = -180.0
+max_value = 180.0
+step = 0.01
+
+[node name="Label2" type="Label" parent="hinge_joint_setting"]
+layout_mode = 2
+text = "Knee Angle"
+
+[node name="sb_knee_upper" type="SpinBox" parent="hinge_joint_setting"]
+layout_mode = 2
+min_value = -180.0
+max_value = 180.0
+step = 0.01
+
+[node name="sb_knee_lower" type="SpinBox" parent="hinge_joint_setting"]
+layout_mode = 2
+min_value = -180.0
+max_value = 180.0
+step = 0.01
+value = -150.0
+
+[node name="preset_setting" type="GridContainer" parent="."]
+layout_mode = 2
+columns = 2
+
+[node name="skeleton_preset" parent="preset_setting" instance=ExtResource("2_norlu")]
+layout_mode = 2
+label = "1"
+
+[node name="skeleton_preset2" parent="preset_setting" instance=ExtResource("2_norlu")]
+layout_mode = 2
+label = "2"
+
+[node name="skeleton_preset3" parent="preset_setting" instance=ExtResource("2_norlu")]
+layout_mode = 2
+label = "3"
+
+[node name="skeleton_preset4" parent="preset_setting" instance=ExtResource("2_norlu")]
+layout_mode = 2
+label = "4"
+
+[node name="skeleton_preset5" parent="preset_setting" instance=ExtResource("2_norlu")]
+layout_mode = 2
+label = "5"
+
+[node name="skeleton_preset6" parent="preset_setting" instance=ExtResource("2_norlu")]
+layout_mode = 2
+label = "6"
+
+[connection signal="button_up" from="VBoxContainer/btn_humanoid_ragdoll" to="." method="_on_btn_humanoid_ragdoll_button_up"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/btn_hide_ragdoll" to="." method="_on_btn_hide_ragdoll_button_up"]
+[connection signal="button_up" from="VBoxContainer/HBoxContainer/btn_show_ragdoll" to="." method="_on_btn_show_ragdoll_button_up"]

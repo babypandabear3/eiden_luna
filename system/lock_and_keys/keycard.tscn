@@ -1,0 +1,101 @@
+[gd_scene load_steps=26 format=3 uid="uid://cfg3x6j0e4r2h"]
+
+[ext_resource type="Script" path="res://system/lock_and_keys/keycard.gd" id="1_7vadw"]
+[ext_resource type="Material" uid="uid://b4i0cps0lllg8" path="res://addons/ply/materials/debug_material_light.tres" id="2_dg7hb"]
+[ext_resource type="Script" path="res://addons/ply/nodes/ply.gd" id="3_ixwgn"]
+[ext_resource type="Script" path="res://addons/ply/resources/ply_mesh.gd" id="4_isg1v"]
+[ext_resource type="Material" uid="uid://b5hltcvsr8ow7" path="res://addons/ply/materials/debug_material_medium.tres" id="5_duqun"]
+[ext_resource type="Material" uid="uid://skrl8khxn3qq" path="res://addons/ply/materials/debug_material_dark.tres" id="6_7rxj4"]
+[ext_resource type="Material" uid="uid://dacfunt7kmw4i" path="res://addons/ply/materials/debug_material_red.tres" id="7_yhnb7"]
+[ext_resource type="Material" uid="uid://c3fj8shvw38ya" path="res://addons/ply/materials/debug_material_orange.tres" id="8_j6tfm"]
+[ext_resource type="Material" uid="uid://dopi0ecblkm83" path="res://addons/ply/materials/debug_material_yellow.tres" id="9_24ek2"]
+[ext_resource type="Material" uid="uid://f6xd80u8vkfw" path="res://addons/ply/materials/debug_material_green.tres" id="10_nad0p"]
+[ext_resource type="Material" uid="uid://l5ph4ka5c0uq" path="res://addons/ply/materials/debug_material_blue.tres" id="11_nhgh3"]
+[ext_resource type="Material" uid="uid://m4fm1mohv8oo" path="res://addons/ply/materials/debug_material_purple.tres" id="12_bwbtm"]
+[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="13_401rx"]
+[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="14_rbxsu"]
+[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="16_sxshw"]
+[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="17_i6t5i"]
+[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="18_ti6q1"]
+[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="19_engrd"]
+[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="20_1eewb"]
+[ext_resource type="Script" path="res://system/lock_and_keys/STATES/KEYCARD/KEY_STATE.gd" id="21_dp5ml"]
+[ext_resource type="Script" path="res://system/lock_and_keys/STATES/KEYCARD/READY.gd" id="22_1xm01"]
+[ext_resource type="Script" path="res://system/lock_and_keys/STATES/KEYCARD/PICKED.gd" id="23_om4f4"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5anbu"]
+_surfaces = [{
+"aabb": AABB(-0.323487, -0.498199, -0.0459694, 0.658579, 1.00001, 0.0919388),
+"attribute_data": PackedByteArray(0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 252, 66, 214, 62, 0, 0, 0, 0, 0, 255, 255, 255, 252, 66, 214, 62, 105, 74, 188, 189, 0, 255, 255, 255, 0, 0, 0, 0, 105, 74, 188, 189, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 105, 74, 188, 189, 0, 0, 0, 0, 0, 255, 255, 255, 105, 74, 188, 189, 252, 66, 214, 62, 0, 255, 255, 255, 0, 0, 0, 0, 252, 66, 214, 62, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 252, 66, 214, 62, 0, 0, 0, 0, 0, 255, 255, 255, 252, 66, 214, 62, 0, 0, 128, 191, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 191, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 120, 128, 59, 191, 0, 0, 0, 0, 0, 255, 255, 255, 120, 128, 59, 191, 105, 74, 188, 189, 0, 255, 255, 255, 0, 0, 0, 0, 105, 74, 188, 189, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 252, 66, 214, 62, 0, 0, 0, 0, 0, 255, 255, 255, 252, 66, 214, 62, 0, 0, 128, 63, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 0, 255, 255, 255, 0, 0, 0, 0, 120, 128, 59, 63, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 122, 129, 123, 189, 0, 0, 0, 0, 0, 255, 255, 255, 34, 13, 13, 62, 147, 220, 117, 62, 0, 255, 255, 255, 129, 237, 75, 62, 147, 220, 117, 62, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 0, 255, 255, 255, 0, 0, 0, 0, 16, 255, 136, 62, 0, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 105, 74, 188, 61, 0, 0, 0, 0, 0, 255, 255, 255, 105, 74, 188, 61, 145, 220, 117, 190, 0, 255, 255, 255, 0, 0, 0, 0, 145, 220, 117, 190),
+"format": 34359742491,
+"index_count": 60,
+"index_data": PackedByteArray(2, 0, 3, 0, 0, 0, 0, 0, 1, 0, 2, 0, 6, 0, 7, 0, 4, 0, 4, 0, 5, 0, 6, 0, 10, 0, 11, 0, 8, 0, 8, 0, 9, 0, 10, 0, 14, 0, 15, 0, 12, 0, 12, 0, 13, 0, 14, 0, 18, 0, 19, 0, 16, 0, 16, 0, 17, 0, 18, 0, 22, 0, 23, 0, 20, 0, 20, 0, 21, 0, 22, 0, 24, 0, 25, 0, 26, 0, 24, 0, 26, 0, 27, 0, 30, 0, 31, 0, 28, 0, 28, 0, 29, 0, 30, 0, 35, 0, 32, 0, 33, 0, 33, 0, 34, 0, 35, 0, 38, 0, 39, 0, 36, 0, 36, 0, 37, 0, 38, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 40,
+"vertex_data": PackedByteArray(23, 160, 165, 190, 8, 118, 0, 63, 105, 74, 60, 189, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 189, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 61, 23, 160, 165, 190, 8, 118, 0, 63, 105, 74, 60, 61, 23, 160, 165, 190, 240, 19, 255, 190, 105, 74, 60, 189, 23, 160, 165, 190, 240, 19, 255, 190, 105, 74, 60, 61, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 61, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 189, 23, 160, 165, 190, 240, 19, 255, 190, 105, 74, 60, 189, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 189, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 189, 23, 160, 165, 190, 8, 118, 0, 63, 105, 74, 60, 189, 46, 145, 171, 62, 8, 118, 0, 63, 105, 74, 60, 189, 46, 145, 171, 62, 191, 41, 108, 190, 105, 74, 60, 189, 46, 145, 171, 62, 191, 41, 108, 190, 105, 74, 60, 61, 46, 145, 171, 62, 8, 118, 0, 63, 105, 74, 60, 61, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 61, 23, 160, 165, 190, 240, 19, 255, 190, 105, 74, 60, 61, 23, 160, 165, 190, 8, 118, 0, 63, 105, 74, 60, 61, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 61, 23, 160, 165, 190, 240, 19, 255, 190, 105, 74, 60, 61, 23, 160, 165, 190, 240, 19, 255, 190, 105, 74, 60, 189, 23, 160, 165, 190, 8, 118, 0, 63, 105, 74, 60, 189, 23, 160, 165, 190, 8, 118, 0, 63, 105, 74, 60, 61, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 189, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 189, 46, 145, 171, 62, 191, 41, 108, 190, 105, 74, 60, 189, 46, 145, 171, 62, 8, 118, 0, 63, 105, 74, 60, 189, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 189, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 61, 46, 145, 171, 62, 191, 41, 108, 190, 105, 74, 60, 61, 46, 145, 171, 62, 191, 41, 108, 190, 105, 74, 60, 189, 150, 139, 194, 61, 240, 19, 255, 190, 105, 74, 60, 61, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 61, 46, 145, 171, 62, 8, 118, 0, 63, 105, 74, 60, 61, 46, 145, 171, 62, 191, 41, 108, 190, 105, 74, 60, 61, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 61, 150, 139, 194, 61, 8, 118, 0, 63, 105, 74, 60, 189, 46, 145, 171, 62, 8, 118, 0, 63, 105, 74, 60, 189, 46, 145, 171, 62, 8, 118, 0, 63, 105, 74, 60, 61, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 0, 0, 255, 127, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 117, 195, 118, 67, 117, 195, 118, 67, 117, 195, 118, 67, 117, 195, 118, 67, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255)
+}]
+
+[sub_resource type="Resource" id="Resource_cbb1c"]
+script = ExtResource("4_isg1v")
+vertexes = PackedVector3Array(-0.323487, -0.498199, -0.0459694, 0.0949928, -0.498199, -0.0459694, 0.0949928, -0.498199, 0.0459694, -0.323487, -0.498199, 0.0459694, -0.323487, 0.501801, -0.0459694, 0.0949928, 0.501801, -0.0459694, 0.0949928, 0.501801, 0.0459694, -0.323487, 0.501801, 0.0459694, 0.335092, 0.501801, -0.0459694, 0.335092, -0.230628, -0.0459694, 0.335092, -0.230628, 0.0459694, 0.335092, 0.501801, 0.0459694)
+vertex_edges = PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 12, 13, 14, 15)
+vertex_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+edge_vertexes = PackedInt32Array(0, 1, 1, 2, 2, 3, 3, 0, 4, 0, 5, 1, 6, 2, 7, 3, 5, 4, 6, 5, 7, 6, 4, 7, 8, 5, 9, 1, 10, 2, 11, 6, 9, 8, 10, 9, 11, 10, 8, 11)
+edge_faces = PackedInt32Array(1, 2, 1, 7, 1, 4, 1, 5, 5, 2, 2, 6, 8, 4, 4, 5, 0, 2, 0, 9, 0, 4, 0, 5, 9, 6, 6, 7, 7, 8, 8, 9, 3, 6, 3, 7, 3, 8, 3, 9)
+edge_edges = PackedInt32Array(3, 5, 0, 14, 1, 7, 2, 4, 11, 0, 8, 13, 15, 2, 10, 3, 9, 4, 10, 12, 11, 6, 8, 7, 19, 5, 16, 1, 17, 6, 18, 9, 17, 12, 18, 13, 19, 14, 16, 15)
+face_edges = PackedInt32Array(11, 0, 4, 19, 6, 7, 12, 13, 14, 15)
+face_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+face_colors = PackedColorArray(0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aejof"]
+radius = 0.6
+
+[node name="Keycard" type="Area3D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_7vadw")
+
+[node name="model_root" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PlyMesh" type="MeshInstance3D" parent="model_root"]
+mesh = SubResource("ArrayMesh_5anbu")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_dg7hb")
+
+[node name="PlyEditor" type="Node" parent="model_root/PlyMesh"]
+script = ExtResource("3_ixwgn")
+ply_mesh = SubResource("Resource_cbb1c")
+materials = Array[Material]([ExtResource("2_dg7hb"), ExtResource("5_duqun"), ExtResource("6_7rxj4"), ExtResource("7_yhnb7"), ExtResource("8_j6tfm"), ExtResource("9_24ek2"), ExtResource("10_nad0p"), ExtResource("11_nhgh3"), ExtResource("12_bwbtm")])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_aejof")
+
+[node name="HFSM" type="Node" parent="."]
+script = ExtResource("13_401rx")
+default_state = "GAMEPLAY"
+
+[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("14_rbxsu")]
+
+[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("16_sxshw")]
+
+[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("17_i6t5i")]
+
+[node name="EVENT" parent="HFSM" instance=ExtResource("18_ti6q1")]
+
+[node name="DIALOG" parent="HFSM" instance=ExtResource("19_engrd")]
+
+[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("20_1eewb")]
+default_state = "KEY_STATE"
+
+[node name="KEY_STATE" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("21_dp5ml")
+default_state = "READY"
+
+[node name="READY" type="Node" parent="HFSM/GAMEPLAY/KEY_STATE"]
+script = ExtResource("22_1xm01")
+
+[node name="PICKED" type="Node" parent="HFSM/GAMEPLAY/KEY_STATE"]
+script = ExtResource("23_om4f4")

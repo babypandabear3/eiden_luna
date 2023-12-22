@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1fjn74lds4ew"]
+
+[ext_resource type="Script" path="res://system/lock_and_keys/lock_and_keys.gd" id="1_o0r2w"]
+
+[node name="LOCK_AND_KEYS" type="Node"]
+script = ExtResource("1_o0r2w")

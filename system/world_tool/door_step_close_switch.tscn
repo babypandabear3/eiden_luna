@@ -1,0 +1,62 @@
+[gd_scene load_steps=14 format=3 uid="uid://bh42vdvo3k5fn"]
+
+[ext_resource type="Script" path="res://system/world_tool/door_step_switch.gd" id="1_m0pow"]
+[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="2_dy1w7"]
+[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="3_j1y21"]
+[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="4_m1ct6"]
+[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="5_tl5cd"]
+[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="6_lt7bp"]
+[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="7_6uphl"]
+[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="8_abqu1"]
+[ext_resource type="Script" path="res://system/hfsm/state.gd" id="9_27lne"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_switch/step_close/door_step_close_INACTIVE.gd" id="12_g5rwj"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_switch/step_close/door_step_close_ACTIVATED.gd" id="13_l7euc"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_t25op"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_72gde"]
+height = 0.1
+radius = 1.0
+
+[node name="Door_Step_Close_Switch" type="Area3D"]
+collision_layer = 64
+collision_mask = 64
+monitorable = false
+script = ExtResource("1_m0pow")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_t25op")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_72gde")
+
+[node name="HFSM" type="Node" parent="."]
+script = ExtResource("2_dy1w7")
+default_state = "GAMEPLAY"
+main_path = NodePath("..")
+
+[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("3_j1y21")]
+
+[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("4_m1ct6")]
+
+[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("5_tl5cd")]
+
+[node name="EVENT" parent="HFSM" instance=ExtResource("6_lt7bp")]
+
+[node name="DIALOG" parent="HFSM" instance=ExtResource("7_6uphl")]
+
+[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("8_abqu1")]
+default_state = "STEP_CLOSE"
+
+[node name="STEP_CLOSE" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("9_27lne")
+default_state = "INACTIVE"
+
+[node name="INACTIVE" type="Node" parent="HFSM/GAMEPLAY/STEP_CLOSE"]
+script = ExtResource("12_g5rwj")
+
+[node name="ACTIVATED" type="Node" parent="HFSM/GAMEPLAY/STEP_CLOSE"]
+script = ExtResource("13_l7euc")

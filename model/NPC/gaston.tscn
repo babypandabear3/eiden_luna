@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://coyqde5sc45sl"]
+
+[ext_resource type="PackedScene" uid="uid://y3ouh3dscr1y" path="res://import/npc/Gaston.glb" id="1_o3dcm"]
+
+[node name="Gaston" instance=ExtResource("1_o3dcm")]
+
+[node name="GeneralSkeleton" parent="Armature_Gaston" index="0"]
+bones/1/position = Vector3(5.80116e-05, 0.478307, -0.000810744)
+bones/1/rotation = Quaternion(6.33663e-08, 2.11003e-09, -4.65661e-10, 1)
+bones/2/rotation = Quaternion(1.11468e-08, 5.63887e-09, -1, 6.40284e-10)
+bones/3/rotation = Quaternion(9.31323e-10, 1, 1.49012e-08, 4.24916e-09)
+bones/4/rotation = Quaternion(-0.0686153, 0.852957, -0.515786, -0.041492)
+bones/5/rotation = Quaternion(-1.19224e-09, 1, -2.98023e-08, 9.87816e-09)
+bones/6/rotation = Quaternion(-0.00623802, -0.242124, -0.969903, 0.0249884)
+bones/7/rotation = Quaternion(0.0426682, 0.879433, -0.473549, 0.0229756)
+bones/8/rotation = Quaternion(0.0426232, 0.8429, -0.535695, 0.0270887)
+bones/9/rotation = Quaternion(-1.27029e-09, 1, 2.98023e-08, -3.95127e-09)
+bones/10/rotation = Quaternion(-7.27596e-12, -1.8772e-09, -4.07454e-10, 1)
+bones/12/rotation = Quaternion(1.11759e-08, 2.03727e-09, 4.65661e-10, 1)
+bones/13/rotation = Quaternion(0.17183, -0.000572605, 0.00328283, 0.985121)
+bones/14/rotation = Quaternion(-1.01863e-10, -4.07454e-10, -2.79397e-09, 1)
+bones/15/rotation = Quaternion(-0.608376, 0.360387, 0.542263, 0.453818)
+bones/16/rotation = Quaternion(-0.044262, 0.854997, -0.51605, -0.0267152)
+bones/17/rotation = Quaternion(0.120884, 0.696697, -0.0589744, 0.704643)
+bones/18/rotation = Quaternion(4.00499e-08, -0.707107, 4.42438e-08, 0.707107)
+bones/20/rotation = Quaternion(0.613358, 0.35184, 0.520135, -0.47902)
+bones/21/rotation = Quaternion(0.0292613, 0.8548, -0.517829, 0.017726)
+bones/22/rotation = Quaternion(0, -0.707107, 4.21468e-08, 0.707107)
+bones/23/rotation = Quaternion(5.64637e-08, 0.707107, 1.43168e-08, 0.707107)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

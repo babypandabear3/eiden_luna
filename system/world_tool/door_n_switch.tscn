@@ -1,0 +1,68 @@
+[gd_scene load_steps=16 format=3 uid="uid://ma21p1t7bxeg"]
+
+[ext_resource type="Script" path="res://system/world_tool/door_n_switch.gd" id="1_b2kpi"]
+[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="2_xftoa"]
+[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="3_5b7ew"]
+[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="5_k7q2r"]
+[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="6_kn3bw"]
+[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="7_feru4"]
+[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="8_1ee5t"]
+[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="9_blncf"]
+[ext_resource type="Script" path="res://system/world_tool/DOOR_STATE.gd" id="9_j7m3e"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_n_switch_CLOSED.gd" id="10_2gs53"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_n_switch_OPENED.gd" id="11_m66b1"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_n_switch_OPENING.gd" id="12_vkgrm"]
+[ext_resource type="Script" path="res://system/world_tool/states/door_and_switch_CLOSING.gd" id="13_q0xx0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_meclk"]
+size = Vector3(4, 6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xjco7"]
+size = Vector3(4, 6, 1)
+
+[node name="Door_n_Switch" type="Node3D"]
+script = ExtResource("1_b2kpi")
+
+[node name="Door" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_meclk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = SubResource("BoxMesh_xjco7")
+
+[node name="HFSM" type="Node" parent="."]
+script = ExtResource("2_xftoa")
+default_state = "GAMEPLAY"
+main_path = NodePath("..")
+
+[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("3_5b7ew")]
+
+[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("5_k7q2r")]
+
+[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("6_kn3bw")]
+
+[node name="EVENT" parent="HFSM" instance=ExtResource("7_feru4")]
+
+[node name="DIALOG" parent="HFSM" instance=ExtResource("8_1ee5t")]
+
+[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("9_blncf")]
+default_state = "DOOR_STATE"
+
+[node name="DOOR_STATE" type="Node" parent="HFSM/GAMEPLAY"]
+script = ExtResource("9_j7m3e")
+default_state = "CLOSED"
+
+[node name="CLOSED" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+script = ExtResource("10_2gs53")
+
+[node name="OPENED" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+script = ExtResource("11_m66b1")
+
+[node name="OPENING" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+script = ExtResource("12_vkgrm")
+
+[node name="CLOSING" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+script = ExtResource("13_q0xx0")

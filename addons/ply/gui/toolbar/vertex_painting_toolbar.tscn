@@ -9,6 +9,7 @@ script = ExtResource("1_m86vm")
 
 [node name="chk_snap" type="CheckBox" parent="."]
 layout_mode = 2
+button_pressed = true
 text = "Snap"
 
 [node name="chk_vertex_painting" type="CheckButton" parent="."]

@@ -1,0 +1,478 @@
+[gd_scene load_steps=22 format=3 uid="uid://besxjh8nxywkx"]
+
+[ext_resource type="PackedScene" uid="uid://1wh7nxamopc5" path="res://import/eiden/eiden.glb" id="1_bvsux"]
+[ext_resource type="ArrayMesh" uid="uid://5r2472e3ksei" path="res://import/eiden/eiden_sword_1_mesh.tres" id="2_n3fbm"]
+[ext_resource type="Script" path="res://tmp/eiden_v4.gd" id="2_re4jj"]
+[ext_resource type="Script" path="res://addons/bpb_ragdoll/bpb_ragdoll.gd" id="4_tialu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kcotx"]
+radius = 0.05
+height = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ao14x"]
+radius = 0.05
+height = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wk1er"]
+radius = 0.05
+height = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e1idr"]
+radius = 0.05
+height = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i6u30"]
+radius = 0.289913
+height = 0.579826
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jnovh"]
+radius = 0.1
+height = 0.236659
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xhdue"]
+radius = 0.1
+height = 0.24396
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4c1w0"]
+radius = 0.1
+height = 0.236659
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ygw4f"]
+radius = 0.1
+height = 0.24396
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_236bb"]
+radius = 0.1
+height = 0.211185
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gngew"]
+radius = 0.078826
+height = 0.157652
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ghw7n"]
+radius = 0.1
+height = 0.211185
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jkmva"]
+radius = 0.078826
+height = 0.157652
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w4tqy"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yuuhk"]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7f2go"]
+radius = 0.0432954
+height = 0.0865908
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2kno1"]
+radius = 0.0432954
+height = 0.0865908
+
+[node name="eiden" instance=ExtResource("1_bvsux")]
+script = ExtResource("2_re4jj")
+
+[node name="GeneralSkeleton" parent="Armature_male" index="0"]
+bones/1/position = Vector3(-3.39857e-15, 0.478307, -2.85093e-08)
+bones/1/rotation = Quaternion(3.00927e-36, 7.52316e-37, 0, 1)
+bones/2/rotation = Quaternion(0.265799, 0.169229, 0.948329, -0.0372217)
+bones/2/scale = Vector3(0.999998, 1, 1.00002)
+bones/3/rotation = Quaternion(-1.94961e-07, 0.930432, -0.366465, 8.40687e-09)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.143404, 0.96077, -0.198225, -0.130628)
+bones/4/scale = Vector3(1, 0.999996, 1)
+bones/5/rotation = Quaternion(-6.56511e-08, 0.992563, -0.12173, 6.36641e-08)
+bones/6/rotation = Quaternion(2.52435e-29, 6.31089e-30, 4.23516e-22, 1)
+bones/7/rotation = Quaternion(3.00927e-36, -8.47033e-22, 2.52435e-29, 1)
+bones/10/rotation = Quaternion(0.0390133, 2.77207e-16, -1.11749e-15, 0.999239)
+bones/13/rotation = Quaternion(0.690915, 0.316234, 0.442468, -0.476292)
+bones/14/rotation = Quaternion(-0.0550168, 0.90638, -0.385931, -0.162809)
+bones/15/rotation = Quaternion(0.279411, -0.655448, 0.250412, 0.655448)
+bones/16/rotation = Quaternion(0.114217, 0.698741, 0.102362, 0.698741)
+bones/18/rotation = Quaternion(0.690915, -0.316234, -0.442468, -0.476292)
+bones/19/rotation = Quaternion(0.0550168, 0.90638, -0.385931, 0.162809)
+bones/20/rotation = Quaternion(0.279411, 0.655448, -0.250412, 0.655448)
+bones/21/rotation = Quaternion(0.131983, -0.600811, -0.0805041, 0.7843)
+bones/22/rotation = Quaternion(-2.98023e-08, -8.9407e-08, 2.98023e-08, 1)
+bones/27/rotation = Quaternion(-0.253284, 0.393402, 0.883759, 0.00731032)
+bones/27/scale = Vector3(1, 1, 1)
+bones/28/rotation = Quaternion(2.6798e-07, 0.8579, -0.513816, 5.48255e-08)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(-0.225633, 0.972286, 0.0610862, -0.0043411)
+bones/29/scale = Vector3(1, 0.999996, 1)
+bones/30/rotation = Quaternion(2.51215e-15, 1, 0, 2.51215e-15)
+bones/31/position = Vector3(0.261949, 0.298845, 0.235111)
+bones/32/position = Vector3(0.123135, 0.105924, 0.0124022)
+bones/32/rotation = Quaternion(0.462138, 0.146193, 0.0412148, 0.873703)
+bones/33/position = Vector3(-0.123135, 0.158798, 0.114286)
+bones/33/rotation = Quaternion(0.622787, -0.20292, 0.00767209, 0.75558)
+bones/34/position = Vector3(-0.271701, 0.36667, 0.314421)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature_male/GeneralSkeleton" index="1"]
+transform = Transform3D(-0.142099, -0.306296, 0.941271, 0.705738, -0.698127, -0.120634, 0.694076, 0.647149, 0.315368, -0.378101, 0.432583, 0.0793407)
+bone_name = "RightHolder"
+bone_idx = 22
+
+[node name="EidenSword1Mesh" type="MeshInstance3D" parent="Armature_male/GeneralSkeleton/BoneAttachment3D" index="0"]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("2_n3fbm")
+skeleton = NodePath("../../../..")
+
+[node name="BPBRagdoll" type="Node3D" parent="." index="2"]
+script = ExtResource("4_tialu")
+ragdoll_active = false
+skeleton_path = NodePath("../Armature_male/GeneralSkeleton")
+
+[node name="Hips" type="RigidBody3D" parent="BPBRagdoll" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.80933e-15, 0.545912, -3.1955e-08)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSHips" type="CollisionShape3D" parent="BPBRagdoll/Hips" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_kcotx")
+
+[node name="TransformHips" type="Marker3D" parent="BPBRagdoll/Hips" index="1"]
+transform = Transform3D(1, 0, 1.50463e-36, 0, 1, -6.01854e-36, -1.50463e-36, 6.01854e-36, 1, 4.10762e-16, -0.0578096, 3.44572e-09)
+
+[node name="Spine" type="RigidBody3D" parent="BPBRagdoll" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.78628e-15, 0.683405, -4.01503e-08)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSSpine" type="CollisionShape3D" parent="BPBRagdoll/Spine" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ao14x")
+
+[node name="TransformSpine" type="Marker3D" parent="BPBRagdoll/Spine" index="1"]
+transform = Transform3D(1, -8.47032e-22, 1.26218e-29, 8.47032e-22, 1, -5.0487e-29, -1.26218e-29, 5.0487e-29, 1, 5.6619e-16, -0.0796841, 4.74954e-09)
+
+[node name="Chest" type="RigidBody3D" parent="BPBRagdoll" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.80948e-15, 0.827407, -4.87334e-08)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSChest" type="CollisionShape3D" parent="BPBRagdoll/Chest" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_wk1er")
+
+[node name="TransformChest" type="Marker3D" parent="BPBRagdoll/Chest" index="1"]
+transform = Transform3D(1, -8.47032e-22, -1.69407e-21, 8.47032e-22, 1, -5.0487e-29, 1.69407e-21, 5.0487e-29, 1, 4.57001e-16, -0.0643172, 3.83361e-09)
+
+[node name="UpperChest" type="RigidBody3D" parent="BPBRagdoll" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87125e-15, 0.976838, -5.76402e-08)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSUpperChest" type="CollisionShape3D" parent="BPBRagdoll/UpperChest" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_e1idr")
+
+[node name="TransformUpperChest" type="Marker3D" parent="BPBRagdoll/UpperChest" index="1"]
+transform = Transform3D(1, -8.47032e-22, -1.69407e-21, 8.47032e-22, 1, -5.0487e-29, 1.69407e-21, 5.0487e-29, 1, 6.04771e-16, -0.0851138, 5.07319e-09)
+
+[node name="Head" type="RigidBody3D" parent="BPBRagdoll" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.53597e-15, 1.35186, -7.99936e-08)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSHead" type="CollisionShape3D" parent="BPBRagdoll/Head" index="0"]
+shape = SubResource("CapsuleShape3D_i6u30")
+
+[node name="TransformHead" type="Marker3D" parent="BPBRagdoll/Head" index="1"]
+transform = Transform3D(1, -8.47032e-22, -1.69407e-21, 8.47032e-22, 1, -5.0487e-29, 1.69407e-21, 5.0487e-29, 1, 2.05996e-15, -0.289913, 1.72802e-08)
+
+[node name="LeftUpperArm" type="RigidBody3D" parent="BPBRagdoll" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319607, 0.957272, -0.0519337)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSLeftUpperArm" type="CollisionShape3D" parent="BPBRagdoll/LeftUpperArm" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_jnovh")
+
+[node name="TransformLeftUpperArm" type="Marker3D" parent="BPBRagdoll/LeftUpperArm" index="1"]
+transform = Transform3D(-0.059437, 0.998227, 0.00325406, -0.0546513, 8.9407e-07, -0.998505, -0.996735, -0.0595261, 0.0545544, -0.11812, -1.19209e-07, 0.00704372)
+
+[node name="LeftLowerArm" type="RigidBody3D" parent="BPBRagdoll" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.559503, 0.95718, -0.0519338)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSLeftLowerArm" type="CollisionShape3D" parent="BPBRagdoll/LeftLowerArm" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_xhdue")
+
+[node name="TransformLeftLowerArm" type="Marker3D" parent="BPBRagdoll/LeftLowerArm" index="1"]
+transform = Transform3D(0.00325415, 0.998227, 0.059437, -0.998505, 9.83343e-07, 0.0546513, 0.0545544, -0.0595261, 0.996735, -0.121776, 9.18508e-05, -0.00704358)
+
+[node name="RightUpperArm" type="RigidBody3D" parent="BPBRagdoll" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.319607, 0.957272, -0.0519337)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSRightUpperArm" type="CollisionShape3D" parent="BPBRagdoll/RightUpperArm" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4c1w0")
+
+[node name="TransformRightUpperArm" type="Marker3D" parent="BPBRagdoll/RightUpperArm" index="1"]
+transform = Transform3D(-0.059437, -0.998227, -0.00325406, 0.0546513, 8.9407e-07, -0.998505, 0.996735, -0.0595261, 0.0545544, 0.11812, -1.19209e-07, 0.00704372)
+
+[node name="RightLowerArm" type="RigidBody3D" parent="BPBRagdoll" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.559503, 0.95718, -0.0519338)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSRightLowerArm" type="CollisionShape3D" parent="BPBRagdoll/RightLowerArm" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ygw4f")
+
+[node name="TransformRightLowerArm" type="Marker3D" parent="BPBRagdoll/RightLowerArm" index="1"]
+transform = Transform3D(0.00325415, -0.998227, -0.059437, 0.998505, 9.83343e-07, 0.0546513, -0.0545544, -0.0595261, 0.996735, 0.121776, 9.18508e-05, -0.00704358)
+
+[node name="LeftUpperLeg" type="RigidBody3D" parent="BPBRagdoll" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123135, 0.331553, 0.00774688)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSLeftUpperLeg" type="CollisionShape3D" parent="BPBRagdoll/LeftUpperLeg" index="0"]
+shape = SubResource("CapsuleShape3D_236bb")
+
+[node name="TransformLeftUpperLeg" type="Marker3D" parent="BPBRagdoll/LeftUpperLeg" index="1"]
+transform = Transform3D(-1, 8.88178e-16, -1.4211e-14, -8.88178e-16, -1, 7.45063e-09, -1.42109e-14, 7.45056e-09, 1.00001, 0, 0.105308, -0.00774692)
+
+[node name="LeftLowerLeg" type="RigidBody3D" parent="BPBRagdoll" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123135, 0.147801, 0.00774693)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSLeftLowerLeg" type="CollisionShape3D" parent="BPBRagdoll/LeftLowerLeg" index="0"]
+shape = SubResource("CapsuleShape3D_gngew")
+
+[node name="TransformLeftLowerLeg" type="Marker3D" parent="BPBRagdoll/LeftLowerLeg" index="1"]
+transform = Transform3D(1, 2.66453e-15, -2.83092e-15, 2.66453e-15, -1, -7.45063e-09, -2.83123e-15, 7.45056e-09, -1.00001, 0, 0.0784446, 0.00774686)
+
+[node name="RightUpperLeg" type="RigidBody3D" parent="BPBRagdoll" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123135, 0.331554, 0.00774688)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSRightUpperLeg" type="CollisionShape3D" parent="BPBRagdoll/RightUpperLeg" index="0"]
+shape = SubResource("CapsuleShape3D_ghw7n")
+
+[node name="TransformRightUpperLeg" type="Marker3D" parent="BPBRagdoll/RightUpperLeg" index="1"]
+transform = Transform3D(-1, 8.88178e-16, -1.4211e-14, -8.88178e-16, -1, 7.45063e-09, -1.42109e-14, 7.45056e-09, 1.00001, 0, 0.105308, -0.00774692)
+
+[node name="RightLowerLeg" type="RigidBody3D" parent="BPBRagdoll" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123135, 0.147801, 0.00774693)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSRightLowerLeg" type="CollisionShape3D" parent="BPBRagdoll/RightLowerLeg" index="0"]
+shape = SubResource("CapsuleShape3D_jkmva")
+
+[node name="TransformRightLowerLeg" type="Marker3D" parent="BPBRagdoll/RightLowerLeg" index="1"]
+transform = Transform3D(1, 2.66453e-15, -2.83092e-15, 2.66453e-15, -1, -7.45063e-09, -2.83123e-15, 7.45056e-09, -1.00001, 0, 0.0784446, 0.00774686)
+
+[node name="RightHand" type="RigidBody3D" parent="BPBRagdoll" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.731483, 0.95718, -0.0519338)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSRightHand" type="CollisionShape3D" parent="BPBRagdoll/RightHand" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_w4tqy")
+
+[node name="TransformRightHand" type="Marker3D" parent="BPBRagdoll/RightHand" index="1"]
+transform = Transform3D(-0.059437, -0.998227, -0.00325415, 0.0546513, 9.83743e-07, -0.998505, 0.996735, -0.0595261, 0.0545544, 0.0502036, -9.19104e-05, 0.00704358)
+
+[node name="LeftHand" type="RigidBody3D" parent="BPBRagdoll" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.731483, 0.95718, -0.0519338)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSLeftHand" type="CollisionShape3D" parent="BPBRagdoll/LeftHand" index="0"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_yuuhk")
+
+[node name="TransformLeftHand" type="Marker3D" parent="BPBRagdoll/LeftHand" index="1"]
+transform = Transform3D(-0.059437, 0.998227, 0.00325415, -0.0546513, 9.83743e-07, -0.998505, -0.996735, -0.0595261, 0.0545544, -0.0502036, -9.19104e-05, 0.00704358)
+
+[node name="RightFoot" type="RigidBody3D" parent="BPBRagdoll" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123135, 0.0431399, 0.0777512)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSRightFoot" type="CollisionShape3D" parent="BPBRagdoll/RightFoot" index="0"]
+shape = SubResource("CapsuleShape3D_7f2go")
+
+[node name="TransformRightFoot" type="Marker3D" parent="BPBRagdoll/RightFoot" index="1"]
+transform = Transform3D(-1, -7.44946e-08, 3.4206e-07, 3.17328e-07, -0.605531, 0.795826, 1.47844e-07, 0.795842, 0.605531, 0, 0.0262163, -0.0777511)
+
+[node name="LeftFoot" type="RigidBody3D" parent="BPBRagdoll" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123135, 0.0432375, 0.0778252)
+collision_layer = 256
+collision_mask = 263
+freeze = true
+
+[node name="CSLeftFoot" type="CollisionShape3D" parent="BPBRagdoll/LeftFoot" index="0"]
+shape = SubResource("CapsuleShape3D_2kno1")
+
+[node name="TransformLeftFoot" type="Marker3D" parent="BPBRagdoll/LeftFoot" index="1"]
+transform = Transform3D(-1, -8.60461e-08, -5.36877e-13, 5.19082e-08, -0.603277, 0.797536, -6.86252e-08, 0.797552, 0.603278, 7.45058e-09, 0.0261187, -0.0778251)
+
+[node name="JSpine" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="17"]
+transform = Transform3D(1, -8.47032e-22, 1.26218e-29, 8.47032e-22, 1, -5.0487e-29, -1.26218e-29, 5.0487e-29, 1, -4.22009e-15, 0.603721, -3.54007e-08)
+node_a = NodePath("../Hips")
+node_b = NodePath("../Spine")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.349066
+angular_limit_z/lower_angle = -0.349066
+
+[node name="JChest" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="18"]
+transform = Transform3D(1, -8.47032e-22, -1.69407e-21, 8.47032e-22, 1, -5.0487e-29, 1.69407e-21, 5.0487e-29, 1, -5.35247e-15, 0.763089, -4.48998e-08)
+node_a = NodePath("../Spine")
+node_b = NodePath("../Chest")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.349066
+angular_limit_z/lower_angle = -0.349066
+
+[node name="JUpperChest" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="19"]
+transform = Transform3D(1, -8.47032e-22, -1.69407e-21, 8.47032e-22, 1, -5.0487e-29, 1.69407e-21, 5.0487e-29, 1, -6.26648e-15, 0.891724, -5.2567e-08)
+node_a = NodePath("../Chest")
+node_b = NodePath("../UpperChest")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.349066
+angular_limit_z/lower_angle = -0.349066
+
+[node name="JHead" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="20"]
+transform = Transform3D(1, -8.47032e-22, -1.69407e-21, 8.47032e-22, 1, -5.0487e-29, 1.69407e-21, 5.0487e-29, 1, -7.47602e-15, 1.06195, -6.27134e-08)
+node_a = NodePath("../UpperChest")
+node_b = NodePath("../Head")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+
+[node name="JLeftUpperArm" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="21"]
+transform = Transform3D(-0.059437, 0.998227, 0.00325406, -0.0546513, 8.9407e-07, -0.998505, -0.996735, -0.0595261, 0.0545544, 0.201487, 0.957272, -0.0448899)
+node_a = NodePath("../UpperChest")
+node_b = NodePath("../LeftUpperArm")
+angular_limit_x/upper_angle = 1.39626
+angular_limit_x/lower_angle = -1.39626
+angular_limit_y/upper_angle = 0.349066
+angular_limit_y/lower_angle = -0.349066
+angular_limit_z/upper_angle = 1.5708
+angular_limit_z/lower_angle = -0.523599
+
+[node name="JLeftLowerArm" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="22"]
+transform = Transform3D(0.00325415, 0.998227, 0.059437, -0.998505, 9.83343e-07, 0.0546513, 0.0545544, -0.0595261, 0.996735, 0.437727, 0.957272, -0.0589774)
+node_a = NodePath("../LeftUpperArm")
+node_b = NodePath("../LeftLowerArm")
+angular_limit_x/lower_angle = -2.0944
+
+[node name="JLeftHand" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="23"]
+transform = Transform3D(-0.059437, 0.998227, 0.00325415, -0.0546513, 9.83743e-07, -0.998505, -0.996735, -0.0595261, 0.0545544, 0.681279, 0.957088, -0.0448902)
+node_a = NodePath("../LeftLowerArm")
+node_b = NodePath("../LeftHand")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+angular_limit_y/upper_angle = 0.349066
+angular_limit_y/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.349066
+angular_limit_z/lower_angle = -0.349066
+
+[node name="JRightUpperArm" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="24"]
+transform = Transform3D(-0.059437, -0.998227, -0.00325406, 0.0546513, 8.9407e-07, -0.998505, 0.996735, -0.0595261, 0.0545544, -0.201487, 0.957272, -0.0448899)
+node_a = NodePath("../UpperChest")
+node_b = NodePath("../RightUpperArm")
+angular_limit_x/upper_angle = 1.39626
+angular_limit_x/lower_angle = -1.39626
+angular_limit_y/upper_angle = 0.349066
+angular_limit_y/lower_angle = -0.349066
+angular_limit_z/upper_angle = 1.5708
+angular_limit_z/lower_angle = -0.523599
+
+[node name="JRightLowerArm" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="25"]
+transform = Transform3D(0.00325415, -0.998227, -0.059437, 0.998505, 9.83343e-07, 0.0546513, -0.0545544, -0.0595261, 0.996735, -0.437727, 0.957272, -0.0589774)
+node_a = NodePath("../RightUpperArm")
+node_b = NodePath("../RightLowerArm")
+angular_limit_x/lower_angle = -2.0944
+
+[node name="JRightHand" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="26"]
+transform = Transform3D(-0.059437, -0.998227, -0.00325415, 0.0546513, 9.83743e-07, -0.998505, 0.996735, -0.0595261, 0.0545544, -0.681279, 0.957088, -0.0448902)
+node_a = NodePath("../RightLowerArm")
+node_b = NodePath("../RightHand")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+angular_limit_y/upper_angle = 0.349066
+angular_limit_y/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.349066
+angular_limit_z/lower_angle = -0.349066
+
+[node name="JLeftUpperLeg" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="27"]
+transform = Transform3D(-1, 8.88178e-16, -1.4211e-14, -8.88178e-16, -1, 7.45063e-09, -1.42109e-14, 7.45056e-09, 1.00001, 0.123135, 0.436862, -4.34653e-08)
+node_a = NodePath("../Hips")
+node_b = NodePath("../LeftUpperLeg")
+angular_limit_x/upper_angle = 0.523599
+angular_limit_x/lower_angle = -1.5708
+angular_limit_y/upper_angle = 0.785398
+
+[node name="JLeftLowerLeg" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="28"]
+transform = Transform3D(1, 2.66453e-15, -2.83092e-15, 2.66453e-15, -1, -7.45063e-09, -2.83123e-15, 7.45056e-09, -1.00001, 0.123135, 0.226245, 0.0154938)
+node_a = NodePath("../LeftUpperLeg")
+node_b = NodePath("../LeftLowerLeg")
+angular_limit_x/lower_angle = -1.5708
+
+[node name="JLeftFoot" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="29"]
+transform = Transform3D(-1, -8.60461e-08, -5.36877e-13, 5.19082e-08, -0.603277, 0.797536, -6.86252e-08, 0.797552, 0.603278, 0.123135, 0.0693562, 6.98492e-08)
+node_a = NodePath("../LeftLowerLeg")
+node_b = NodePath("../LeftFoot")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.174533
+angular_limit_z/lower_angle = -0.174533
+
+[node name="JRightUpperLeg" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="30"]
+transform = Transform3D(-1, 8.88178e-16, -1.4211e-14, -8.88178e-16, -1, 7.45063e-09, -1.42109e-14, 7.45056e-09, 1.00001, -0.123135, 0.436862, -4.34653e-08)
+node_a = NodePath("../Hips")
+node_b = NodePath("../RightUpperLeg")
+angular_limit_x/upper_angle = 0.523599
+angular_limit_x/lower_angle = -1.5708
+angular_limit_y/upper_angle = 0.785398
+
+[node name="JRightLowerLeg" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="31"]
+transform = Transform3D(1, 2.66453e-15, -2.83092e-15, 2.66453e-15, -1, -7.45063e-09, -2.83123e-15, 7.45056e-09, -1.00001, -0.123135, 0.226245, 0.0154938)
+node_a = NodePath("../RightUpperLeg")
+node_b = NodePath("../RightLowerLeg")
+angular_limit_x/lower_angle = -1.5708
+
+[node name="JRightFoot" type="Generic6DOFJoint3D" parent="BPBRagdoll" index="32"]
+transform = Transform3D(-1, -7.44946e-08, 3.4206e-07, 3.17328e-07, -0.605531, 0.795826, 1.47844e-07, 0.795842, 0.605531, -0.123135, 0.0693562, 6.89179e-08)
+node_a = NodePath("../RightLowerLeg")
+node_b = NodePath("../RightFoot")
+angular_limit_x/upper_angle = 0.349066
+angular_limit_x/lower_angle = -0.349066
+angular_limit_z/upper_angle = 0.174533
+angular_limit_z/lower_angle = -0.174533

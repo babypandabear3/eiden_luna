@@ -85,12 +85,34 @@ func _box_select(camera: Camera3D, v1: Vector2, v2: Vector2, additive: bool) -> 
 	_plugin.selection.select_geometry(hits, additive)
 
 func _scan_selection(camera: Camera3D, event: InputEventMouseButton) -> void:
+	#var ray = camera.project_ray_normal(event.position)
+	#var ray_pos = _intersect_with_plane(camera, event.position, camera.global_transform.origin + (-camera.global_transform.basis.z * 0.1) , camera.global_transform.basis.z) 
+	#var raydist = ray_pos.distance_to(_plugin.selected_node_parent.global_position)
+	#if raydist > 100:
+	#	ray_pos += camera.global_transform.basis.z * (-raydist * 0.9)
+	#ray_pos -= _plugin.selected_node_parent.global_position
+	#var selection_mode = _plugin.toolbar.selection_mode
+	#var hits = _plugin.selection.get_ray_intersection(ray_pos, ray, selection_mode)
+	
 	var ray = camera.project_ray_normal(event.position)
 	var ray_pos = camera.project_ray_origin(event.position)
+	ray_pos -= _plugin.selected_node_parent.global_position
+	var distance_loop = _plugin.selected_node_parent.global_position.distance_to(ray_pos) / 10.0
 	var selection_mode = _plugin.toolbar.selection_mode
-
-	var hits = _plugin.selection.get_ray_intersection(ray_pos, ray, selection_mode)
-	var deselect = true
+	
+	var hits = []
+	for i in 9:
+		hits = _plugin.selection.get_ray_intersection(ray_pos, ray, selection_mode)
+		if hits.size() == 0:
+			ray_pos += (-camera.global_transform.basis.z) * distance_loop
+		else:
+			break
+	#var hits = _plugin.selection.get_ray_intersection(ray_pos, ray, selection_mode)
+	print("cam pos=", camera.global_position)
+	var deselect = false
+	if hits.size() == 0:
+		deselect = true
+		_plugin.selection.select_geometry([], false)
 	if hits.size() > 0:
 		deselect = false
 		var handled = false
@@ -121,6 +143,7 @@ func _scan_selection(camera: Camera3D, event: InputEventMouseButton) -> void:
 			_plugin.selection.select_geometry([hits[0]], event.shift_pressed)
 	if deselect and not event.shift_pressed:
 		_plugin.selection.select_geometry([], false)
+	
 
 
 var click_position: Vector2
@@ -130,6 +153,7 @@ var in_edit: bool
 func handle_input(camera: Camera3D, event: InputEvent) -> bool:
 	if _plugin.ignore_inputs:
 		return false
+	
 	match mode:
 		OperationMode.NORMAL:
 			if gsr_applied:
@@ -188,6 +212,8 @@ func handle_input(camera: Camera3D, event: InputEvent) -> bool:
 						try_select_all()
 					else:
 						_plugin.selection.select_geometry([], false)
+				#if event.keycode == KEY_F:
+				#	camera.global_transform.origin = _plugin.selected_node_parent.global_transform.origin + (camera.global_transform.basis.z * 100)
 					
 		OperationMode.GSR:
 			if event is InputEventKey and event.pressed:
@@ -383,3 +409,10 @@ func try_select_all():
 			_plugin.selection.select_geometry(arr, false)
 			
 			
+func _intersect_with_plane(camera, screen_point, plane_origin, plane_normal):
+	var grid_plane = Plane(plane_normal, plane_origin)
+	var from = camera.project_ray_origin(screen_point)
+	var dir = camera.project_ray_normal(screen_point)
+	
+	var result = grid_plane.intersects_ray(from, dir)
+	return result

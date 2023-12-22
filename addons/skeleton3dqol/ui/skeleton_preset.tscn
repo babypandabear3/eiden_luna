@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt1wucwead8k4"]
+
+[ext_resource type="Script" path="res://addons/skeleton3dqol/ui/skeleton_preset.gd" id="1_xl8vh"]
+
+[node name="skeleton_preset" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xl8vh")
+
+[node name="lbl_setup_no" type="Label" parent="."]
+layout_mode = 2
+
+[node name="btn_load" type="Button" parent="."]
+layout_mode = 2
+text = "Load"
+
+[node name="btn_save" type="Button" parent="."]
+layout_mode = 2
+text = "Save"
+
+[connection signal="button_up" from="btn_load" to="." method="_on_btn_load_button_up"]
+[connection signal="button_up" from="btn_save" to="." method="_on_btn_save_button_up"]

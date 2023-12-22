@@ -26,21 +26,7 @@ func _ready():
 	if Engine.is_editor_hint():
 		return
 		
-	####
-	# START - THIS BLOCK IS A WORKAROUND TO REMOVE ERROR NAVIGATION NOT READY WHEN GAME STARTED
-	###
-	set_physics_process(false)
-	await get_tree().physics_frame
-	await get_tree().physics_frame
-	set_physics_process(true)
-	####
-	# END - THIS BLOCK IS A WORKAROUND TO REMOVE ERROR NAVIGATION NOT READY WHEN GAME STARTED
-	###
-
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	active_state = get_node_or_null(default_state)
-	state_current = default_state
-	state_next = state_current
 	
 	var main = get_node_or_null(main_path)
 	if main:
@@ -51,10 +37,32 @@ func _ready():
 	var model = get_node_or_null(model_path)
 	if model:
 		blackboard["model"] = model
+		var anim_player = model.find_children("*", "AnimationPlayer")
+		if anim_player.size() > 0:
+			anim_player = anim_player.front()
+			blackboard["anim_player"] = anim_player
 		
 	var navagent = get_node_or_null(navagent_path)
 	if navagent:
 		blackboard["navagent"] = navagent
+		
+	####
+	# START - THIS BLOCK IS A WORKAROUND TO REMOVE ERROR NAVIGATION NOT READY WHEN GAME STARTED
+	###
+	set_physics_process(false)
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	set_physics_process(true)
+	####
+	# END - THIS BLOCK IS A WORKAROUND TO REMOVE ERROR NAVIGATION NOT READY WHEN GAME STARTED
+	###
+		
+	active_state = get_node_or_null(default_state)
+	if active_state:
+		active_state.blackboard = blackboard
+		
+	state_current = default_state
+	state_next = state_current
 		
 func set_setup(value):
 	if value:
@@ -84,6 +92,8 @@ func _physics_process(_delta):
 	if state_prev != state_current:
 		active_state.blackboard = blackboard
 		active_state.entering()
+		active_state.child_entering()
+		
 		
 	active_state.working(_delta)
 	active_state.do_job_as_parent(_delta)

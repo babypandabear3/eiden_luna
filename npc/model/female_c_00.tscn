@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://o1dvy006uf0g"]
+
+[ext_resource type="PackedScene" uid="uid://4lvn80vdud4e" path="res://import/npc/NPCF_2.glb" id="1_ua7xh"]
+
+[node name="NPCF_2" instance=ExtResource("1_ua7xh")]
+
+[node name="GeneralSkeleton" parent="Armature_Base_007" index="0"]
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+bones/1/position = Vector3(0, 0.478307, 0.48109)
+bones/1/rotation = Quaternion(0, -0.137042, 0, 0.990565)
+bones/2/rotation = Quaternion(0.444331, -0.207821, -0.86755, -0.0820816)
+bones/3/rotation = Quaternion(5.7037e-07, 0.954772, -0.29734, 1.53086e-08)
+bones/4/rotation = Quaternion(7.37937e-14, 0.707107, -0.707107, 8.69837e-14)
+bones/5/rotation = Quaternion(-1.59741e-07, 0.995966, 0.0897279, -2.9649e-08)
+bones/6/rotation = Quaternion(0.139386, 0.0793181, 0.986754, -0.0244354)
+bones/7/rotation = Quaternion(-3.20484e-07, 0.985964, -0.166955, 2.67755e-09)
+bones/8/rotation = Quaternion(-6.63358e-14, 0.707107, -0.707107, -9.44417e-14)
+bones/9/rotation = Quaternion(2.57955e-07, 0.989916, 0.141656, -5.28386e-08)
+bones/12/rotation = Quaternion(1.00583e-22, 7.10543e-15, 1.33227e-15, 1)
+bones/13/rotation = Quaternion(0, -7.10543e-15, 1.77636e-15, 1)
+bones/14/rotation = Quaternion(1.1287e-08, 0.121913, 2.31561e-09, 0.992541)
+bones/15/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
+bones/16/rotation = Quaternion(0.117543, 0.826617, -0.549835, 0.0238701)
+bones/17/rotation = Quaternion(0.244496, 0.790143, -0.136584, 0.545198)
+bones/18/rotation = Quaternion(0.152537, -0.703938, -0.0167607, 0.693486)
+bones/20/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
+bones/21/rotation = Quaternion(-0.118882, 0.787767, -0.604183, -0.015911)
+bones/22/rotation = Quaternion(0.255769, -0.828676, 0.171665, 0.467342)
+bones/23/rotation = Quaternion(0.202223, 0.694062, 0.0667277, 0.687699)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]

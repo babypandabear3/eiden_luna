@@ -107,6 +107,8 @@ func selection_change():
 				
 
 func _handles(object):
+	if object is PlyEditor:
+		return false
 	if object is BPB_Root_Basic:
 		return true
 	elif object is Node3D:

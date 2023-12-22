@@ -20,12 +20,14 @@ func do_job_as_parent(_delta):
 		if not active_state:
 			return
 		else:
+			active_state.blackboard = blackboard
 			state_current = default_state
 			state_next = state_current
 	
 	if state_prev != state_current:
 		active_state.blackboard = blackboard
 		active_state.entering()
+		active_state.child_entering()
 		
 	active_state.working(_delta)
 	active_state.do_job_as_parent(_delta)
@@ -43,6 +45,12 @@ func set_next_state(_par):
 	get_parent().state_next = _par
 
 func entering():
+	pass
+	
+func child_entering():
+	if active_state:
+		active_state.blackboard = blackboard
+		active_state.entering()
 	pass
 	
 func working(_delta):
