@@ -66,14 +66,14 @@ func _make_ragdoll():
 	make_rigidbodies("RightFoot", "RightToes", leg_radius, foot_height, false, true)
 	make_rigidbodies("LeftFoot", "LeftToes", leg_radius, foot_height, false, true)
 	fix_edge_bone_position()
-	make_joints("Hips", "Spine", 20, -20, 0, 0, 20, -20)
-	make_joints("Spine", "Chest", 20, -20, 0, 0, 20, -20)
-	make_joints("Chest", "UpperChest", 20, -20, 0, 0, 20, -20)
-	make_joints("UpperChest", "Head", 20, -20, 0, 0, 20, -20)
-	make_joints("UpperChest", "LeftUpperArm", 80, -80, 20, -20, 90, -30)
+	make_joints("Hips", "Spine", 20, -20, 0, 0, 20, 0)
+	make_joints("Spine", "Chest", 20, -20, 0, 0, 20, 0)
+	make_joints("Chest", "UpperChest", 20, -20, 0, 0, 20, 0)
+	make_joints("UpperChest", "Head", 20, -20, 0, 0, 20, 0)
+	make_joints("UpperChest", "LeftUpperArm", 0, -80, 20, -20, 90, -30)
 	make_joints("LeftUpperArm", "LeftLowerArm", 0, -120, 0, 0, 0, 0)
 	make_joints("LeftLowerArm", "LeftHand", 20, -20, 20, -20, 20, -20)
-	make_joints("UpperChest", "RightUpperArm", 80, -80, 20, -20, 90, -30)
+	make_joints("UpperChest", "RightUpperArm", 0, -80, 20, -20, 90, -30)
 	make_joints("RightUpperArm", "RightLowerArm", 0, -120, 0, 0, 0, 0)
 	make_joints("RightLowerArm", "RightHand", 20, -20, 20, -20, 20, -20)
 	make_joints("Hips", "LeftUpperLeg", 30, -90, 45, 0, 0, 0)
@@ -140,7 +140,7 @@ func make_rigidbodies(BoneA, BoneB, radius, height, rotated=false, calculate_hei
 	rb.set_collision_mask_value(2, true)
 	rb.set_collision_mask_value(3, true)
 	rb.set_collision_mask_value(9, true)
-	
+	rb.mass = 2.0
 	rb.freeze = true
 
 func fix_edge_bone_position():
@@ -229,8 +229,7 @@ func _physics_process(delta):
 		var bindex = bone_index[bone_name]
 		var marker = bone_ragdoll_transform[bone_name]
 		var btransform = marker.global_transform
-		skeleton.set_bone_global_pose_override(bindex, btransform, 1.0)
-		
+		skeleton.set_bone_global_pose_override(bindex, global_transform.inverse() * btransform, 1.0)
 func start_physical_simulation():
 	ragdoll_active = true
 	
