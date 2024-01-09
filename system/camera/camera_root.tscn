@@ -1,61 +1,56 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkog4oamutbqq"]
+[gd_scene load_steps=12 format=3 uid="uid://bkog4oamutbqq"]
 
 [ext_resource type="Script" path="res://system/camera/camera_root.gd" id="1_kgmv5"]
-[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="2_clp8d"]
-[ext_resource type="Script" path="res://system/camera/Camera_main_logic_axis_Y.gd" id="2_wf7ja"]
-[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="3_jgoc5"]
-[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="4_d6tw4"]
-[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="5_jg4kp"]
-[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="7_6xxmm"]
-[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="9_a0p4r"]
-[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="11_6kcnx"]
 [ext_resource type="Script" path="res://system/smooth_move/smooth_move.gd" id="11_cabyd"]
+[ext_resource type="Script" path="res://system/bpbfsm/bpbfsm_3d.gd" id="12_sgoo7"]
+[ext_resource type="PackedScene" uid="uid://bhe4jmd0jkeqi" path="res://system/bpbfsm/BASE_STATES/main_menu.tscn" id="13_5uev4"]
+[ext_resource type="PackedScene" uid="uid://ddbkvp4rvsjje" path="res://system/bpbfsm/BASE_STATES/system_menu.tscn" id="14_8f5l0"]
 [ext_resource type="Script" path="res://system/camera/FULL_CONTROL.gd" id="14_pkokb"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0yf31"]
+[ext_resource type="PackedScene" uid="uid://c4yu630b1fk4p" path="res://system/bpbfsm/BASE_STATES/gameplay_menu.tscn" id="15_6jcc8"]
+[ext_resource type="PackedScene" uid="uid://hxt25njq22y5" path="res://system/bpbfsm/BASE_STATES/event.tscn" id="16_8dnex"]
+[ext_resource type="PackedScene" uid="uid://khwqv087wmf6" path="res://system/bpbfsm/BASE_STATES/dialog.tscn" id="17_krvav"]
+[ext_resource type="PackedScene" uid="uid://cqxldf8npmar2" path="res://system/bpbfsm/BASE_STATES/gameplay.tscn" id="18_8os7h"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r4lwt"]
 radius = 0.2
 
-[node name="CameraRoot" type="Node3D"]
+[node name="CameraRoot" type="Node3D" groups=["camera_root"]]
 script = ExtResource("1_kgmv5")
 
-[node name="Camera_main_logic_axis_Y" type="Node3D" parent="."]
+[node name="axis_Y" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-script = ExtResource("2_wf7ja")
-noise = SubResource("FastNoiseLite_0yf31")
 
-[node name="axis_X" type="SpringArm3D" parent="Camera_main_logic_axis_Y"]
+[node name="axis_X" type="SpringArm3D" parent="axis_Y"]
 shape = SubResource("SphereShape3D_r4lwt")
 spring_length = 5.0
 margin = 0.05
 
-[node name="camera_target" type="Node3D" parent="Camera_main_logic_axis_Y/axis_X"]
-
-[node name="HFSM" type="Node" parent="."]
-script = ExtResource("2_clp8d")
-default_state = "GAMEPLAY"
-main_path = NodePath("../Camera_main_logic_axis_Y")
-
-[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("4_d6tw4")]
-
-[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("3_jgoc5")]
-
-[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("9_a0p4r")]
-
-[node name="EVENT" parent="HFSM" instance=ExtResource("7_6xxmm")]
-
-[node name="DIALOG" parent="HFSM" instance=ExtResource("5_jg4kp")]
-
-[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("11_6kcnx")]
-default_state = "FULL_CONTROL"
-
-[node name="FULL_CONTROL" type="Node" parent="HFSM/GAMEPLAY"]
-script = ExtResource("14_pkokb")
+[node name="camera_target" type="Node3D" parent="axis_Y/axis_X"]
 
 [node name="Smooth_Move" type="Node3D" parent="."]
 script = ExtResource("11_cabyd")
-target_path = NodePath("../Camera_main_logic_axis_Y/axis_X/camera_target")
+target_path = NodePath("../axis_Y/axis_X/camera_target")
 
 [node name="Camera" type="Camera3D" parent="Smooth_Move"]
 current = true
+
+[node name="BPBFMS_MAIN" type="Node" parent="."]
+script = ExtResource("12_sgoo7")
+state_init = "GAMEPLAY"
+main_path = NodePath("..")
+
+[node name="MAIN_MENU" parent="BPBFMS_MAIN" instance=ExtResource("13_5uev4")]
+
+[node name="SYSTEM_MENU" parent="BPBFMS_MAIN" instance=ExtResource("14_8f5l0")]
+
+[node name="GAMEPLAY_MENU" parent="BPBFMS_MAIN" instance=ExtResource("15_6jcc8")]
+
+[node name="EVENT" parent="BPBFMS_MAIN" instance=ExtResource("16_8dnex")]
+
+[node name="DIALOG" parent="BPBFMS_MAIN" instance=ExtResource("17_krvav")]
+
+[node name="GAMEPLAY" parent="BPBFMS_MAIN" instance=ExtResource("18_8os7h")]
+state_init = "FULL_CONTROL"
+
+[node name="FULL_CONTROL" type="Node" parent="BPBFMS_MAIN/GAMEPLAY"]
+script = ExtResource("14_pkokb")

@@ -8,7 +8,7 @@ enum _KEYCARD_COLOR {
 	YELLOW,
 }
 
-@onready var hfsm = $HFSM
+@onready var hfsm = $BPBFMS_MAIN
 @export var keycard_color : _KEYCARD_COLOR = _KEYCARD_COLOR.BLUE
 @export var unique_id : int = -1
 @export var create_keycard :bool = false :

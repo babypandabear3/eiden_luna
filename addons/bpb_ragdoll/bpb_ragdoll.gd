@@ -11,6 +11,22 @@ extends Node3D
 	set(value):
 		make_ragdoll = false
 		_make_ragdoll()
+		
+@export var collide_with_player : bool = true
+
+@export var save_pose_up : bool = false :
+	set(value):
+		save_pose_up = false
+		_save_pose_up()
+		
+@export var res_pose_up : Res_BPBRagdoll
+
+@export var save_pose_down : bool = false :
+	set(value):
+		save_pose_down = false
+		_save_pose_down()
+		
+@export var res_pose_down : Res_BPBRagdoll
 
 @export var skeleton_path : NodePath
 @export var head_radius : float = 0.3
@@ -24,12 +40,17 @@ extends Node3D
 var skeleton : Skeleton3D
 var bone_lists : Array = ["Hips", "LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "Spine", "Chest", "UpperChest", "Head", "HeadTop", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightUpperArm", "RightLowerArm", "RightHand", "RightUpperLeg", "RightLowerLeg", "RightFoot", "LeftToes", "RightToes"]
 var ragdoll_bone_lists : Array = ["Hips", "LeftUpperLeg", "LeftLowerLeg", "LeftFoot", "Spine", "Chest", "UpperChest", "Head", "LeftUpperArm", "LeftLowerArm", "LeftHand", "RightUpperArm", "RightLowerArm", "RightHand", "RightUpperLeg", "RightLowerLeg", "RightFoot"]
+var ragdoll_bones_for_impulse : Array = ["Hips", "Spine", "Chest", "UpperChest"]
 var bone_index = {}
 var bone_transform = {}
 var rigidbodies = {}
 var bone_ragdoll_transform = {}
 var physic_bone_pair = {}
 var default_transforms = {}
+
+var physical_bones = {}
+var ragdoll_rids = []
+var helper = {}
 
 func _make_ragdoll():
 	skeleton = get_node_or_null(skeleton_path) as Skeleton3D
@@ -41,8 +62,8 @@ func _make_ragdoll():
 		obj.queue_free()
 	for obj in find_children("*", "Generic6DOFJoint3D"):
 		obj.queue_free()
-	for obj in find_children("*", "Marker3D"):
-		obj.queue_free()
+	#for obj in find_children("*", "Marker3D"):
+	#	obj.queue_free()
 	await get_tree().create_timer(0.1).timeout
 	
 	make_rigidbodies("Hips", "Spine", body_radius, body_height, true)
@@ -66,10 +87,10 @@ func _make_ragdoll():
 	make_rigidbodies("RightFoot", "RightToes", leg_radius, foot_height, false, true)
 	make_rigidbodies("LeftFoot", "LeftToes", leg_radius, foot_height, false, true)
 	fix_edge_bone_position()
-	make_joints("Hips", "Spine", 20, -20, 0, 0, 20, 0)
-	make_joints("Spine", "Chest", 20, -20, 0, 0, 20, 0)
-	make_joints("Chest", "UpperChest", 20, -20, 0, 0, 20, 0)
-	make_joints("UpperChest", "Head", 20, -20, 0, 0, 20, 0)
+	make_joints("Hips", "Spine", 20, -10, 0, 0, 20, 0)
+	make_joints("Spine", "Chest", 20, -10, 0, 0, 20, 0)
+	make_joints("Chest", "UpperChest", 20, -10, 0, 0, 20, 0)
+	make_joints("UpperChest", "Head", 10, -10, 0, 0, 10, 0)
 	make_joints("UpperChest", "LeftUpperArm", 0, -80, 20, -20, 90, -30)
 	make_joints("LeftUpperArm", "LeftLowerArm", 0, -120, 0, 0, 0, 0)
 	make_joints("LeftLowerArm", "LeftHand", 20, -20, 20, -20, 20, -20)
@@ -137,11 +158,13 @@ func make_rigidbodies(BoneA, BoneB, radius, height, rotated=false, calculate_hei
 	rb.set_collision_layer_value(1, false)
 	rb.set_collision_layer_value(9, true)
 	rb.set_collision_mask_value(1, true)
-	rb.set_collision_mask_value(2, true)
+	if collide_with_player:
+		rb.set_collision_mask_value(2, true)
 	rb.set_collision_mask_value(3, true)
 	rb.set_collision_mask_value(9, true)
 	rb.mass = 2.0
 	rb.freeze = true
+	#rb.top_level = true
 
 func fix_edge_bone_position():
 	var lower_arm_height = get_node("RightLowerArm/CSRightLowerArm").shape.height
@@ -195,17 +218,26 @@ func get_physicbone_pair():
 				physic_bone_pair[bone_name] = obj
 
 func save_default_transforms():
+	default_transforms["myself"] = transform
 	for obj in find_children("*", "RigidBody3D"):
 		default_transforms[obj] = obj.transform
-	for obj in find_children("*", "Generic6DOFJoint3D"):
+	for obj in find_children("*", "CollisionShape3D"):
 		default_transforms[obj] = obj.transform
 	for obj in find_children("*", "Marker3D"):
 		default_transforms[obj] = obj.transform
+	for obj in find_children("*", "Generic6DOFJoint3D"):
+		default_transforms[obj] = obj.transform
 
 func reset_default_transform():
+	transform = default_transforms["myself"]
 	for obj in default_transforms.keys():
-		obj.transform = default_transforms[obj]
+		if not obj is String:
+			obj.transform = default_transforms[obj]
 	
+func get_physical_bones():
+	for obj in skeleton.find_children("*", "PhysicalBone3D"):
+		physical_bones[obj.bone_name] = obj
+		
 func _ready():
 	skeleton = get_node_or_null(skeleton_path) as Skeleton3D
 	if not skeleton:
@@ -214,6 +246,12 @@ func _ready():
 	get_bone_name()
 	get_ragdoll_bone()
 	get_physicbone_pair()
+	collect_ragdoll_rids()
+	get_physical_bones()
+	
+func collect_ragdoll_rids():
+	for obj in find_children("*", "RigidBody3D"):
+		ragdoll_rids.append(obj.get_rid())
 	
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -230,9 +268,126 @@ func _physics_process(delta):
 		var marker = bone_ragdoll_transform[bone_name]
 		var btransform = marker.global_transform
 		skeleton.set_bone_global_pose_override(bindex, global_transform.inverse() * btransform, 1.0)
+
+		
 func start_physical_simulation():
 	ragdoll_active = true
+	#skeleton.physical_bones_start_simulation()
+	for obj in find_children("*", "RigidBody3D"):
+		obj.top_level = true
+	
+func stop_physical_simulation():
+	ragdoll_active = false
+	#skeleton.physical_bones_stop_simulation()
+	for obj in find_children("*", "RigidBody3D"):
+		obj.top_level = false
+	skeleton.clear_bones_global_pose_override()
+
 	
 func apply_impulse(force):
-	for bone_name in bone_ragdoll_transform.keys():
-		bone_ragdoll_transform[bone_name].get_parent().apply_central_impulse(force)
+	for bone_name in ragdoll_bone_lists:
+		var force_multiplier := randf_range(0.75, 1.0)
+		if bone_name in ragdoll_bones_for_impulse:
+			force_multiplier = 1.0
+		bone_ragdoll_transform[bone_name].get_parent().apply_central_impulse(force * force_multiplier)
+
+func _save_pose_up():
+	skeleton = get_node_or_null(skeleton_path) as Skeleton3D
+	if not skeleton:
+		return
+	if not res_pose_up:
+		res_pose_up = Res_BPBRagdoll.new() as Res_BPBRagdoll
+	res_pose_up.save_bone_transform(skeleton)
+	notify_property_list_changed()
+
+func _save_pose_down():
+	skeleton = get_node_or_null(skeleton_path) as Skeleton3D
+	if not skeleton:
+		return
+	if not res_pose_down:
+		res_pose_down = Res_BPBRagdoll.new() as Res_BPBRagdoll
+	res_pose_down.save_bone_transform(skeleton)
+	notify_property_list_changed()
+	
+func get_hips_global_transform():
+	return get_node("Hips").global_transform
+	#return bone_ragdoll_transform["Hips"].global_transform
+
+func get_spine_global_transform():
+	return get_node("Spine").global_transform
+	#return bone_ragdoll_transform["Spine"].global_transform
+	
+func get_res_pose_up():
+	return res_pose_up
+	
+func get_res_pose_down():
+	return res_pose_down
+
+func play_get_up(): 
+	var res_pose : Res_BPBRagdoll
+	var hip_transform = get_hips_global_transform()
+	var spine_transform = get_spine_global_transform()
+	var face_up = true
+	var bas_x = Vector3.RIGHT
+	var bas_y = Vector3.UP
+	var bas_z = (spine_transform.origin - hip_transform.origin).slide(bas_y).normalized()
+	
+	if hip_transform.basis.z.dot(Vector3.UP) > 0.0:
+		face_up = true
+		res_pose = get_res_pose_up()
+		bas_z *= -1
+	else:
+		face_up = false
+		res_pose = get_res_pose_down()
+		
+	bas_x = bas_y.cross(bas_z)
+
+	transform.basis = Basis(bas_x, bas_y, bas_z)
+	
+	for bone_name in ragdoll_bone_lists:
+		var tween = create_tween()
+		#var target_transform = global_transform.inverse() * res_pose.get_bone_transform(bone_name) 
+		var target_transform = make_helper(bone_name, res_pose)
+		#tween.tween_property(bone_ragdoll_transform[bone_name], "global_transform", target_transform, 1.0)
+		var obj = bone_ragdoll_transform[bone_name]
+		tween.tween_method(slerp_transform.bind(obj.global_transform.orthonormalized(), target_transform.orthonormalized(), obj), 0.0, 1.0, 1.0)
+
+	await get_tree().create_timer(2.0).timeout
+	stop_physical_simulation()
+	reset_default_transform()
+	### TODO : MOVE PLAYER BODY TO CORRECT TRANSFORM FIRST BEFORE PLAYING ANIMATION
+	
+	var anim = owner.find_children("*", "AnimationPlayer").front()
+	if face_up:
+		anim.play("FALL_BACK")
+	else:
+		anim.play("FALL_FWD")
+	anim.seek(2.0)
+	
+	
+func make_helper(bone_name, res_pose):
+	if not helper.has(bone_name):
+		var marker = Marker3D.new()
+		add_child(marker)
+		marker.owner = owner
+		helper[bone_name] = marker
+	helper[bone_name].transform = res_pose.get_bone_transform(bone_name)
+	
+	return helper[bone_name].global_transform
+
+func get_ragdoll_rid():
+	return ragdoll_rids
+
+func slerp_transform(weight:float, old_transform:Transform3D, new_transform:Transform3D, object):
+	
+	var old_pos = old_transform.origin 
+	var new_pos = new_transform.origin
+	
+	var old_bas = old_transform.basis
+	var new_bas = new_transform.basis
+	
+	var lerp_origin = old_pos.slerp(new_pos, weight)
+	var lerp_basis = old_bas.slerp(new_bas, weight)
+	var lerp_transform = Transform3D(lerp_basis, lerp_origin)
+	object.global_transform = lerp_transform
+	#return lerp_transform

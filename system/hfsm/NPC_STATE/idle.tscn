@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cc6lb3umk6q7v"]
-
-[ext_resource type="Script" path="res://system/hfsm/NPC_STATE/script/IDLE.gd" id="1_c6pew"]
-
-[node name="IDLE" type="Node"]
-script = ExtResource("1_c6pew")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddbkvp4rvsjje"]
+
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/system_menu.gd" id="1_wuwqc"]
+
+[node name="SYSTEM_MENU" type="Node"]
+script = ExtResource("1_wuwqc")

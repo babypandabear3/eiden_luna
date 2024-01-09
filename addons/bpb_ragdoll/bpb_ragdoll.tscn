@@ -4,4 +4,5 @@
 
 [node name="bpb_ragdoll" type="Node3D"]
 script = ExtResource("1_n2eg1")
-ragdoll_active = null
+save_pose_up = null
+save_pose_down = null

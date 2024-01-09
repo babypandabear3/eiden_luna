@@ -1,17 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtgy11uo1jc32"]
+[gd_scene load_steps=19 format=3 uid="uid://dtgy11uo1jc32"]
 
 [ext_resource type="Script" path="res://system/lock_and_keys/door_keycard.gd" id="1_xq3y1"]
 [ext_resource type="PackedScene" uid="uid://l2kmt5pceodm" path="res://tmp/tmp_door_mesh.tscn" id="2_ydvi3"]
-[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="3_wb6pk"]
-[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="4_coaer"]
-[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="6_dhujc"]
-[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="7_db4li"]
-[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="8_jynty"]
-[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="9_d72y4"]
-[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="10_coj7l"]
-[ext_resource type="Script" path="res://system/lock_and_keys/STATES/DOOR_KEYCARD/DOOR_STATE.gd" id="11_jw605"]
+[ext_resource type="Script" path="res://system/bpbfsm/bpbfsm_3d.gd" id="11_kwl8a"]
 [ext_resource type="Script" path="res://system/lock_and_keys/STATES/DOOR_KEYCARD/OPENING.gd" id="11_w88ck"]
 [ext_resource type="Script" path="res://system/lock_and_keys/STATES/DOOR_KEYCARD/CLOSING.gd" id="12_gkngg"]
+[ext_resource type="PackedScene" uid="uid://bhe4jmd0jkeqi" path="res://system/bpbfsm/BASE_STATES/main_menu.tscn" id="12_s03rb"]
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/main_menu.gd" id="13_u5nak"]
+[ext_resource type="PackedScene" uid="uid://ddbkvp4rvsjje" path="res://system/bpbfsm/BASE_STATES/system_menu.tscn" id="14_l3hea"]
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/system_menu.gd" id="15_t5nhs"]
+[ext_resource type="PackedScene" uid="uid://c4yu630b1fk4p" path="res://system/bpbfsm/BASE_STATES/gameplay_menu.tscn" id="16_aeyhr"]
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/gameplay_menu.gd" id="17_csxth"]
+[ext_resource type="PackedScene" uid="uid://hxt25njq22y5" path="res://system/bpbfsm/BASE_STATES/event.tscn" id="18_bk515"]
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/event.gd" id="19_d206t"]
+[ext_resource type="PackedScene" uid="uid://khwqv087wmf6" path="res://system/bpbfsm/BASE_STATES/dialog.tscn" id="20_bg2pp"]
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/dialog.gd" id="21_ld78t"]
+[ext_resource type="PackedScene" uid="uid://cqxldf8npmar2" path="res://system/bpbfsm/BASE_STATES/gameplay.tscn" id="22_0sxyv"]
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/gameplay.gd" id="23_yswk5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_78j0r"]
 radius = 3.0
@@ -26,29 +31,33 @@ script = ExtResource("1_xq3y1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_78j0r")
 
-[node name="HFSM" type="Node" parent="."]
-script = ExtResource("3_wb6pk")
-default_state = "GAMEPLAY"
+[node name="BPBFMS_MAIN" type="Node" parent="."]
+script = ExtResource("11_kwl8a")
+state_init = "GAMEPLAY"
+main_path = NodePath("..")
+model_path = NodePath("../tmp_door_mesh")
 
-[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("4_coaer")]
+[node name="MAIN_MENU" type="Node" parent="BPBFMS_MAIN" instance=ExtResource("12_s03rb")]
+script = ExtResource("13_u5nak")
 
-[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("6_dhujc")]
+[node name="SYSTEM_MENU" type="Node" parent="BPBFMS_MAIN" instance=ExtResource("14_l3hea")]
+script = ExtResource("15_t5nhs")
 
-[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("7_db4li")]
+[node name="GAMEPLAY_MENU" type="Node" parent="BPBFMS_MAIN" instance=ExtResource("16_aeyhr")]
+script = ExtResource("17_csxth")
 
-[node name="EVENT" parent="HFSM" instance=ExtResource("8_jynty")]
+[node name="EVENT" type="Node" parent="BPBFMS_MAIN" instance=ExtResource("18_bk515")]
+script = ExtResource("19_d206t")
 
-[node name="DIALOG" parent="HFSM" instance=ExtResource("9_d72y4")]
+[node name="DIALOG" type="Node" parent="BPBFMS_MAIN" instance=ExtResource("20_bg2pp")]
+script = ExtResource("21_ld78t")
 
-[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("10_coj7l")]
-default_state = "DOOR_STATE"
+[node name="GAMEPLAY" type="Node" parent="BPBFMS_MAIN" instance=ExtResource("22_0sxyv")]
+script = ExtResource("23_yswk5")
+state_init = "CLOSING"
 
-[node name="DOOR_STATE" type="Node" parent="HFSM/GAMEPLAY"]
-script = ExtResource("11_jw605")
-default_state = "CLOSING"
-
-[node name="OPENING" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+[node name="OPENING" type="Node" parent="BPBFMS_MAIN/GAMEPLAY"]
 script = ExtResource("11_w88ck")
 
-[node name="CLOSING" type="Node" parent="HFSM/GAMEPLAY/DOOR_STATE"]
+[node name="CLOSING" type="Node" parent="BPBFMS_MAIN/GAMEPLAY"]
 script = ExtResource("12_gkngg")

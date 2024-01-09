@@ -1,9 +1,7 @@
-extends HFSM_STATE
+extends BPBFSM_STATE
 
 
-var model : Lock_N_Key_Model_Door
 func entering():
-	model = blackboard["model"]
 	model.closing()
 	
 func working(_delta):

@@ -18,7 +18,7 @@ visible = false
 navigation_mesh = SubResource("NavigationMesh_72df7")
 
 [node name="CameraRoot" parent="." instance=ExtResource("7_ymge4")]
-target_path = NodePath("../Player")
+position_target_path = NodePath("../Player")
 
 [node name="editor_player" parent="." instance=ExtResource("17_cpv7t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.545532, 0.900835, 5.07429)

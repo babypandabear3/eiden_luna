@@ -1,48 +1,44 @@
-[gd_scene load_steps=43 format=3 uid="uid://bsmude3h8vk6i"]
+[gd_scene load_steps=39 format=3 uid="uid://bsmude3h8vk6i"]
 
 [ext_resource type="Script" path="res://system/actor/body.gd" id="1_66flj"]
 [ext_resource type="Script" path="res://system/smooth_move/smooth_move.gd" id="2_2pq0h"]
 [ext_resource type="Script" path="res://player/Model_Player.gd" id="3_tnw6v"]
-[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="4_abi35"]
 [ext_resource type="PackedScene" uid="uid://besxjh8nxywkx" path="res://model/eiden/eiden_v4.tscn" id="4_j7ri1"]
 [ext_resource type="PackedScene" uid="uid://cg4dv43trrup4" path="res://player/sensors.tscn" id="5_es4sx"]
-[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="5_hne5u"]
-[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="7_7xsmm"]
-[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="8_dq5aq"]
-[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="9_rpxv6"]
-[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="10_wnut0"]
-[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="11_tsnlm"]
-[ext_resource type="Script" path="res://player/states/PLAYER_CONTROL.gd" id="13_fm768"]
-[ext_resource type="Script" path="res://player/states/GROUNDED.gd" id="13_whwp8"]
-[ext_resource type="Script" path="res://player/states/JUMP.gd" id="14_5jwrm"]
-[ext_resource type="Script" path="res://player/states/AIRBORNE.gd" id="15_145um"]
-[ext_resource type="Script" path="res://player/states/JUMP_2ND.gd" id="15_wb7of"]
-[ext_resource type="Script" path="res://player/states/WALLJUMP.gd" id="16_lwwon"]
-[ext_resource type="Script" path="res://player/states/AIRBORNE_FWD.gd" id="17_vi10i"]
-[ext_resource type="Script" path="res://player/states/WALL_LANDED.gd" id="19_8khg0"]
-[ext_resource type="Script" path="res://player/states/HANGING_ENTER.gd" id="19_axask"]
-[ext_resource type="Script" path="res://player/states/HANGING.gd" id="20_4h0b3"]
-[ext_resource type="Script" path="res://player/states/HANGING_MLEFT.gd" id="21_74s7y"]
-[ext_resource type="Script" path="res://player/states/HANGING_MRIGHT.gd" id="22_fpf2j"]
-[ext_resource type="Script" path="res://player/states/HANGING_CLIMB_UP.gd" id="24_5na4n"]
-[ext_resource type="Script" path="res://player/states/WALLRUN.gd" id="25_8segq"]
-[ext_resource type="Script" path="res://player/states/WALLRUN_UP.gd" id="26_8pm8t"]
-[ext_resource type="Script" path="res://player/states/WALLRUN_RIGHT.gd" id="27_8prdl"]
-[ext_resource type="Script" path="res://player/states/WALLRUN_LEFT.gd" id="28_vpe8t"]
-[ext_resource type="Script" path="res://player/states/ROLL.gd" id="30_a855p"]
-[ext_resource type="Script" path="res://player/states/WALL_CLIMB.gd" id="31_ae0dp"]
-[ext_resource type="Script" path="res://player/states/COMBAT.gd" id="31_yemka"]
-[ext_resource type="Script" path="res://player/states/L0.gd" id="32_humwl"]
-[ext_resource type="Script" path="res://player/states/WALL_HANGING.gd" id="32_upb80"]
-[ext_resource type="Script" path="res://player/states/WALL_HANGING_LEFT.gd" id="33_6fg2p"]
-[ext_resource type="Script" path="res://player/states/WALL_HANGING_RIGHT.gd" id="34_d0nkk"]
-[ext_resource type="Script" path="res://player/states/WALL_HANGING_CLIMB_UP.gd" id="35_uktyr"]
-[ext_resource type="Script" path="res://player/states/HURT.gd" id="36_jr5nq"]
-[ext_resource type="Script" path="res://player/states/RAGDOLL.gd" id="37_6fbt1"]
-[ext_resource type="Script" path="res://player/states/GET_UP.gd" id="38_mw1n2"]
+[ext_resource type="Script" path="res://system/bpbfsm/bpbfsm_3d.gd" id="6_r5fkm"]
+[ext_resource type="Script" path="res://player/fsm_states/ROLL.gd" id="30_cmurc"]
+[ext_resource type="Script" path="res://player/fsm_states/HANGING_ENTER.gd" id="33_j0hlw"]
+[ext_resource type="Script" path="res://player/fsm_states/HANGING.gd" id="34_33dwm"]
+[ext_resource type="Script" path="res://player/fsm_states/HANGING_MLEFT.gd" id="35_30jey"]
+[ext_resource type="Script" path="res://player/fsm_states/HANGING_MRIGHT.gd" id="36_dxyd5"]
+[ext_resource type="Script" path="res://player/fsm_states/HANGING_CLIMB_UP.gd" id="37_swf23"]
+[ext_resource type="Script" path="res://player/fsm_states/WALLRUN.gd" id="38_k1cd5"]
+[ext_resource type="Script" path="res://player/fsm_states/WALLRUN_UP.gd" id="39_wuawg"]
+[ext_resource type="Script" path="res://player/fsm_states/WALLRUN_RIGHT.gd" id="40_280eo"]
+[ext_resource type="Script" path="res://player/fsm_states/WALLRUN_LEFT.gd" id="41_0gojp"]
+[ext_resource type="Script" path="res://player/fsm_states/HURT.gd" id="42_4kypp"]
+[ext_resource type="PackedScene" uid="uid://bhe4jmd0jkeqi" path="res://system/bpbfsm/BASE_STATES/main_menu.tscn" id="42_85alb"]
+[ext_resource type="Script" path="res://player/fsm_states/RAGDOLL.gd" id="43_fdv66"]
+[ext_resource type="Script" path="res://player/fsm_states/COMBAT.gd" id="44_2s2d5"]
+[ext_resource type="PackedScene" uid="uid://ddbkvp4rvsjje" path="res://system/bpbfsm/BASE_STATES/system_menu.tscn" id="44_vnpi8"]
+[ext_resource type="Script" path="res://player/fsm_states/ATTACK.gd" id="45_ug1pl"]
+[ext_resource type="PackedScene" uid="uid://c4yu630b1fk4p" path="res://system/bpbfsm/BASE_STATES/gameplay_menu.tscn" id="46_3pd7m"]
+[ext_resource type="Script" path="res://player/fsm_states/FALL.gd" id="46_4bll1"]
+[ext_resource type="PackedScene" uid="uid://hxt25njq22y5" path="res://system/bpbfsm/BASE_STATES/event.tscn" id="48_ahs63"]
+[ext_resource type="PackedScene" uid="uid://khwqv087wmf6" path="res://system/bpbfsm/BASE_STATES/dialog.tscn" id="50_80ju5"]
+[ext_resource type="Script" path="res://player/fsm_states/JUMP_2ND.gd" id="52_72hgt"]
+[ext_resource type="PackedScene" uid="uid://cqxldf8npmar2" path="res://system/bpbfsm/BASE_STATES/gameplay.tscn" id="52_684rg"]
+[ext_resource type="Script" path="res://player/fsm_states/WALLJUMP.gd" id="53_2rhtn"]
+[ext_resource type="Script" path="res://player/fsm_states/AIRBORNE_FWD.gd" id="54_4ku8l"]
+[ext_resource type="Script" path="res://player/fsm_states/PLAYER_CONTROL.gd" id="54_bvfid"]
+[ext_resource type="Script" path="res://player/fsm_states/GROUNDED.gd" id="55_bucsd"]
+[ext_resource type="Script" path="res://player/fsm_states/WALL_LANDED.gd" id="55_s07mk"]
+[ext_resource type="Script" path="res://player/fsm_states/AIRBORNE.gd" id="56_jgcec"]
+[ext_resource type="Script" path="res://player/fsm_states/GET_UP.gd" id="56_m4p6k"]
+[ext_resource type="Script" path="res://player/fsm_states/JUMP.gd" id="57_i85qg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_72vle"]
-radius = 0.3
+radius = 0.4
 height = 1.6
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_0g22u"]
@@ -84,132 +80,100 @@ script = ExtResource("2_2pq0h")
 script = ExtResource("3_tnw6v")
 
 [node name="Sensors" parent="Smooth_Move/Model_Player" instance=ExtResource("5_es4sx")]
-state_machine_path = NodePath("../../../HFSM")
+state_machine_path = NodePath("../../../BPBFMS_MAIN")
 
 [node name="eiden" parent="Smooth_Move/Model_Player" instance=ExtResource("4_j7ri1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 
-[node name="HFSM" type="Node" parent="."]
-script = ExtResource("4_abi35")
-default_state = "GAMEPLAY"
+[node name="BPBFMS_MAIN" type="Node" parent="."]
+script = ExtResource("6_r5fkm")
 main_path = NodePath("..")
-main_is_body = true
+body_path = NodePath("..")
 model_path = NodePath("../Smooth_Move/Model_Player")
-navagent_path = NodePath("../NavigationAgent3D")
+state_init = "GAMEPLAY"
 
-[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("5_hne5u")]
+[node name="MAIN_MENU" parent="BPBFMS_MAIN" instance=ExtResource("42_85alb")]
 
-[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("7_7xsmm")]
+[node name="SYSTEM_MENU" parent="BPBFMS_MAIN" instance=ExtResource("44_vnpi8")]
 
-[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("8_dq5aq")]
+[node name="GAMEPLAY_MENU" parent="BPBFMS_MAIN" instance=ExtResource("46_3pd7m")]
 
-[node name="EVENT" parent="HFSM" instance=ExtResource("9_rpxv6")]
+[node name="EVENT" parent="BPBFMS_MAIN" instance=ExtResource("48_ahs63")]
 
-[node name="DIALOG" parent="HFSM" instance=ExtResource("10_wnut0")]
+[node name="DIALOG" parent="BPBFMS_MAIN" instance=ExtResource("50_80ju5")]
 
-[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("11_tsnlm")]
-default_state = "PLAYER_CONTROL"
+[node name="GAMEPLAY" parent="BPBFMS_MAIN" instance=ExtResource("52_684rg")]
+state_init = "PLAYER_CONTROL"
 
-[node name="PLAYER_CONTROL" type="Node" parent="HFSM/GAMEPLAY"]
-script = ExtResource("13_fm768")
-default_state = "GROUNDED"
+[node name="PLAYER_CONTROL" type="Node" parent="BPBFMS_MAIN/GAMEPLAY"]
+script = ExtResource("54_bvfid")
+state_init = "GROUNDED"
 
-[node name="GROUNDED" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("13_whwp8")
+[node name="GROUNDED" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("55_bucsd")
 
-[node name="JUMP" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("14_5jwrm")
+[node name="AIRBORNE" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("56_jgcec")
 
-[node name="AIRBORNE" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("15_145um")
+[node name="JUMP" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("57_i85qg")
 
-[node name="JUMP_2ND" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("15_wb7of")
+[node name="JUMP_2ND" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("52_72hgt")
 
-[node name="WALLJUMP" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("16_lwwon")
+[node name="WALLJUMP" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("53_2rhtn")
 
-[node name="AIRBORNE_FWD" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("17_vi10i")
+[node name="AIRBORNE_FWD" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("54_4ku8l")
 
-[node name="WALL_LANDED" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("19_8khg0")
+[node name="WALL_LANDED" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("55_s07mk")
 
-[node name="HANGING_ON_LEDGE" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("19_axask")
-default_state = "HANGING"
+[node name="ROLL" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("30_cmurc")
 
-[node name="HANGING" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
-script = ExtResource("20_4h0b3")
+[node name="GET_UP" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("56_m4p6k")
 
-[node name="HANGING_MLEFT" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
-script = ExtResource("21_74s7y")
+[node name="FALL" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("46_4bll1")
 
-[node name="HANGING_MRIGHT" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
-script = ExtResource("22_fpf2j")
+[node name="HANGING_ON_LEDGE" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("33_j0hlw")
 
-[node name="HANGING_CLIMB_UP" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
-script = ExtResource("24_5na4n")
+[node name="HANGING" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
+script = ExtResource("34_33dwm")
 
-[node name="WALLRUN" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("25_8segq")
-default_state = "WALLRUN_UP"
+[node name="HANGING_MLEFT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
+script = ExtResource("35_30jey")
 
-[node name="WALLRUN_UP" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/WALLRUN"]
-script = ExtResource("26_8pm8t")
+[node name="HANGING_MRIGHT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
+script = ExtResource("36_dxyd5")
 
-[node name="WALLRUN_RIGHT" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/WALLRUN"]
-script = ExtResource("27_8prdl")
+[node name="HANGING_CLIMB_UP" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
+script = ExtResource("37_swf23")
 
-[node name="WALLRUN_LEFT" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/WALLRUN"]
-script = ExtResource("28_vpe8t")
+[node name="WALLRUN" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
+script = ExtResource("38_k1cd5")
 
-[node name="ROLL" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("30_a855p")
+[node name="WALLRUN_UP" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/WALLRUN"]
+script = ExtResource("39_wuawg")
 
-[node name="WALL_HANGING" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL"]
-script = ExtResource("31_ae0dp")
-default_state = "WALL_HANGING"
+[node name="WALLRUN_RIGHT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/WALLRUN"]
+script = ExtResource("40_280eo")
 
-[node name="WALL_HANGING" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/WALL_HANGING"]
-script = ExtResource("32_upb80")
+[node name="WALLRUN_LEFT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/WALLRUN"]
+script = ExtResource("41_0gojp")
 
-[node name="WALL_HANGING_LEFT" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/WALL_HANGING"]
-script = ExtResource("33_6fg2p")
+[node name="HURT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY"]
+script = ExtResource("42_4kypp")
 
-[node name="WALL_HANGING_RIGHT" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/WALL_HANGING"]
-script = ExtResource("34_d0nkk")
+[node name="RAGDOLL" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/HURT"]
+script = ExtResource("43_fdv66")
 
-[node name="WALL_HANGING_CLIMB_UP" type="Node" parent="HFSM/GAMEPLAY/PLAYER_CONTROL/WALL_HANGING"]
-script = ExtResource("35_uktyr")
+[node name="COMBAT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY"]
+script = ExtResource("44_2s2d5")
 
-[node name="HURT" type="Node" parent="HFSM/GAMEPLAY"]
-script = ExtResource("36_jr5nq")
-default_state = "RAGDOLL"
-
-[node name="RAGDOLL" type="Node" parent="HFSM/GAMEPLAY/HURT"]
-script = ExtResource("37_6fbt1")
-
-[node name="GET_UP" type="Node" parent="HFSM/GAMEPLAY/HURT"]
-script = ExtResource("38_mw1n2")
-
-[node name="COMBAT" type="Node" parent="HFSM/GAMEPLAY"]
-script = ExtResource("31_yemka")
-default_state = "L0"
-
-[node name="L0" type="Node" parent="HFSM/GAMEPLAY/COMBAT"]
-script = ExtResource("32_humwl")
-
-[node name="L1" type="Node" parent="HFSM/GAMEPLAY/COMBAT"]
-script = ExtResource("32_humwl")
-anim = "ATK_L1"
-
-[node name="H0" type="Node" parent="HFSM/GAMEPLAY/COMBAT"]
-script = ExtResource("32_humwl")
-anim = "ATK_H0"
-timeout = 1.1
-
-[node name="H1" type="Node" parent="HFSM/GAMEPLAY/COMBAT"]
-script = ExtResource("32_humwl")
-anim = "ATK_H1"
-timeout = 1.3
+[node name="ATTACK" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/COMBAT"]
+script = ExtResource("45_ug1pl")

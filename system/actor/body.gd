@@ -17,9 +17,9 @@ enum _MOTION_STATE {
 @export var gravity_modifier_down := 2.0
 @export var coyote_time := 0.1
 @export var jump_limit := 2
-@export var acc := 15.0
-@export var deacc := 50.0
-@export var impulse_deacc := 55.0
+@export_range(0.0, 1.0) var acc :float = 0.25
+@export_range(0.0, 1.0) var deacc :float = 0.83
+@export_range(0.0, 1.0) var impulse_deacc :float = 0.91
 @export var horizontal_speed_scale := 1.0
 @export var vertical_speed_scale := 1.0
 @export var gravity_scale := 1.0
@@ -31,6 +31,7 @@ var jump_count := 0
 var impulse := Vector3.ZERO
 var do_jump := false
 
+var physic_fps = ProjectSettings.get_setting("physics/common/physics_ticks_per_second")
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var tween_basis : Tween
 var gravity_area_detector = preload("res://system/actor/gravity_area_detector.tscn")
@@ -129,16 +130,16 @@ func do_walk(delta):
 			vel_v *= 0.5
 			
 	if direction:
-		var motion_h = direction.slide(gravity_direction).normalized() * acc * delta
+		var motion_h = direction.slide(gravity_direction).normalized() * acc * physic_fps * delta
 		vel_h += motion_h
 		vel_h = vel_h.limit_length(SPEED)
 	else:
-		vel_h = lerp(vel_h, Vector3.ZERO, deacc * delta)
+		vel_h = lerp(vel_h, Vector3.ZERO, deacc * physic_fps * delta)
 
 	velocity = (vel_h * horizontal_speed_scale) + (vel_v * vertical_speed_scale) + impulse
 	move_and_slide()
 	
-	impulse *= impulse_deacc * delta
+	impulse *= impulse_deacc * physic_fps * delta
 	
 func do_fly(delta):
 	var vel = velocity
@@ -146,11 +147,11 @@ func do_fly(delta):
 		vel += direction.normalized()
 		vel = vel.limit_length(SPEED)
 	else:
-		vel = lerp(vel, Vector3.ZERO, deacc * delta)
+		vel = lerp(vel, Vector3.ZERO, deacc * physic_fps * delta)
 	velocity = vel + impulse
 	move_and_slide()
 	
-	impulse *= impulse_deacc * delta
+	impulse *= impulse_deacc * physic_fps * delta
 	
 func do_swim(_delta):
 	pass
@@ -222,3 +223,6 @@ func velocity_zeroed():
 	
 func jump_released():
 	jump_is_released = true
+
+func direction_zeroed():
+	direction = Vector3.ZERO

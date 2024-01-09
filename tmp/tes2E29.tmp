@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2wttqjeyvci8"]
+
+[ext_resource type="Script" path="res://system/bpbfsm/bpbfsm.gd" id="1_bqjxy"]
+[ext_resource type="Script" path="res://tmp/state/IDLE.gd" id="2_e3qn4"]
+[ext_resource type="Script" path="res://tmp/state/MOVE1.gd" id="3_m4sdv"]
+[ext_resource type="Script" path="res://tmp/state/MOVE2.gd" id="4_j508e"]
+[ext_resource type="Script" path="res://tmp/WORK.gd" id="5_3mh1l"]
+[ext_resource type="Script" path="res://tmp/UP_DOWN.gd" id="6_qhtqd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j4wv4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftyjd"]
+size = Vector3(3, 3, 3)
+
+[node name="TEST_FSM" type="Area3D"]
+collision_mask = 2
+
+[node name="model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="model"]
+mesh = SubResource("BoxMesh_j4wv4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ftyjd")
+
+[node name="BPBFSM" type="Node" parent="."]
+script = ExtResource("1_bqjxy")
+state_init = "IDLE"
+main_path = NodePath("..")
+
+[node name="IDLE" type="Node" parent="BPBFSM"]
+script = ExtResource("2_e3qn4")
+state_init = "MOVE1"
+
+[node name="MOVE1" type="Node" parent="BPBFSM/IDLE"]
+script = ExtResource("3_m4sdv")
+
+[node name="MOVE2" type="Node" parent="BPBFSM/IDLE"]
+script = ExtResource("4_j508e")
+
+[node name="WORK" type="Node" parent="BPBFSM"]
+script = ExtResource("5_3mh1l")
+state_init = "UP_DOWN"
+
+[node name="UP_DOWN" type="Node" parent="BPBFSM/WORK"]
+script = ExtResource("6_qhtqd")

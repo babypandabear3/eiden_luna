@@ -1,13 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://brq4qiqic5nlx"]
+[gd_scene load_steps=4 format=3 uid="uid://brq4qiqic5nlx"]
 
 [ext_resource type="Script" path="res://system/world_tool/jump_pod.gd" id="1_ci7n8"]
-[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="1_i6gvy"]
-[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="2_vwl1k"]
-[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="4_d16am"]
-[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="5_mmdc0"]
-[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="6_e7trl"]
-[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="7_polg2"]
-[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="8_h34xb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_axp3s"]
 
@@ -26,21 +19,3 @@ shape = SubResource("SphereShape3D_axp3s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="model_root"]
 mesh = SubResource("SphereMesh_vmswy")
-
-[node name="HFSM" type="Node" parent="."]
-script = ExtResource("1_i6gvy")
-default_state = "GAMEPLAY"
-main_path = NodePath("..")
-model_path = NodePath("../model_root")
-
-[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("2_vwl1k")]
-
-[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("4_d16am")]
-
-[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("5_mmdc0")]
-
-[node name="EVENT" parent="HFSM" instance=ExtResource("6_e7trl")]
-
-[node name="DIALOG" parent="HFSM" instance=ExtResource("7_polg2")]
-
-[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("8_h34xb")]

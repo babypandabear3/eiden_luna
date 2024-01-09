@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://g3qx0ah5fthn"]
-
-[ext_resource type="Script" path="res://system/hfsm/main_state/MAIN_STATE_SCRIPT.gd" id="1_q3b0p"]
-
-[node name="MAIN_MENU" type="Node"]
-script = ExtResource("1_q3b0p")

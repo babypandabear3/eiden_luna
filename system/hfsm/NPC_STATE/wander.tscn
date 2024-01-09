@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d37epafh660ik"]
-
-[ext_resource type="Script" path="res://system/hfsm/NPC_STATE/script/WANDER.gd" id="1_rsgns"]
-
-[node name="WANDER" type="Node"]
-script = ExtResource("1_rsgns")

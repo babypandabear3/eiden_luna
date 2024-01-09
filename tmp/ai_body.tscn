@@ -1,19 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://c7g8d1t451vif"]
+[gd_scene load_steps=6 format=3 uid="uid://c7g8d1t451vif"]
 
 [ext_resource type="Script" path="res://system/actor/body.gd" id="1_jtv6u"]
-[ext_resource type="Script" path="res://system/hfsm/hfsm.gd" id="2_2cmex"]
 [ext_resource type="Script" path="res://system/smooth_move/smooth_move.gd" id="2_xn1h7"]
 [ext_resource type="PackedScene" uid="uid://dep0c1bslyd70" path="res://import/npc/NPC00.glb" id="3_vjv2l"]
 [ext_resource type="Script" path="res://system/actor/model_generic.gd" id="4_y3iam"]
-[ext_resource type="PackedScene" uid="uid://g3qx0ah5fthn" path="res://system/hfsm/main_state/main_menu.tscn" id="6_3c28d"]
-[ext_resource type="PackedScene" uid="uid://cuvqwg6hqv6dt" path="res://system/hfsm/main_state/system_menu.tscn" id="6_jvl2a"]
-[ext_resource type="PackedScene" uid="uid://bi3xhnth2riqs" path="res://system/hfsm/main_state/dialog.tscn" id="7_nj0u7"]
-[ext_resource type="PackedScene" uid="uid://byjwlcd8j1hsc" path="res://system/hfsm/main_state/event.tscn" id="8_xogwe"]
-[ext_resource type="PackedScene" uid="uid://4s62i5kfprqw" path="res://system/hfsm/main_state/gameplay_menu.tscn" id="9_q6hx8"]
-[ext_resource type="PackedScene" uid="uid://bqrbuyxndpirk" path="res://system/hfsm/main_state/gameplay.tscn" id="10_r5nku"]
-[ext_resource type="PackedScene" uid="uid://3w1gujwbjvri" path="res://system/hfsm/NPC_STATE/schedule.tscn" id="12_vy401"]
-[ext_resource type="PackedScene" uid="uid://d37epafh660ik" path="res://system/hfsm/NPC_STATE/wander.tscn" id="13_i2msk"]
-[ext_resource type="PackedScene" uid="uid://cc6lb3umk6q7v" path="res://system/hfsm/NPC_STATE/idle.tscn" id="14_iv4yy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8bg6d"]
 radius = 0.4
@@ -36,32 +26,3 @@ script = ExtResource("2_xn1h7")
 [node name="NPC00" parent="Smooth_Move" instance=ExtResource("3_vjv2l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
 script = ExtResource("4_y3iam")
-
-[node name="HFSM" type="Node" parent="."]
-process_mode = 3
-script = ExtResource("2_2cmex")
-default_state = "GAMEPLAY"
-main_path = NodePath("..")
-main_is_body = true
-model_path = NodePath("../Smooth_Move/NPC00")
-navagent_path = NodePath("../NavigationAgent3D")
-
-[node name="MAIN_MENU" parent="HFSM" instance=ExtResource("6_3c28d")]
-
-[node name="SYSTEM_MENU" parent="HFSM" instance=ExtResource("6_jvl2a")]
-
-[node name="GAMEPLAY_MENU" parent="HFSM" instance=ExtResource("9_q6hx8")]
-
-[node name="EVENT" parent="HFSM" instance=ExtResource("8_xogwe")]
-
-[node name="DIALOG" parent="HFSM" instance=ExtResource("7_nj0u7")]
-
-[node name="GAMEPLAY" parent="HFSM" instance=ExtResource("10_r5nku")]
-default_state = "SCHEDULE"
-
-[node name="SCHEDULE" parent="HFSM/GAMEPLAY" instance=ExtResource("12_vy401")]
-home = "WANDER"
-
-[node name="WANDER" parent="HFSM/GAMEPLAY/SCHEDULE" instance=ExtResource("13_i2msk")]
-
-[node name="IDLE" parent="HFSM/GAMEPLAY/SCHEDULE" instance=ExtResource("14_iv4yy")]

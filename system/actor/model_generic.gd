@@ -97,3 +97,21 @@ func slerp_direction(_dir:Vector3):
 func slerp_basis(weight:float, old_bas:Basis, new_bas:Basis):
 	global_transform.basis = old_bas.slerp(new_bas, weight)
 
+func set_immediate_direction(_dir : Vector3):
+	if is_zero_approx(_dir.length_squared()):
+		return
+	if _dir.normalized().is_equal_approx(last_direction):
+		return
+	else:
+		last_direction = _dir
+		var new_bas := global_transform.basis
+		new_bas.y = parent_node.global_transform.basis.y
+		if z_as_forward:
+			new_bas.z = _dir.slide(new_bas.y).normalized()
+			new_bas.x = new_bas.y.cross(new_bas.z)
+		else:
+			new_bas.z = -_dir.slide(new_bas.y).normalized()
+			new_bas.x = new_bas.y.cross(new_bas.z)
+		
+		new_bas = new_bas.orthonormalized()
+		global_transform.basis = new_bas

@@ -90,13 +90,12 @@ func _on_foot_area_entered(area):
 		World_Tool._TYPE.JUMP_POD:
 			jump_pod_entered.emit()
 		World_Tool._TYPE.PUNCH_TO_RAGDOLL:
-			print("punched")
 			punched_to_ragdoll_entered.emit(area)
 			
 func _on_foot_area_exited(area):
 	match area.type:
 		World_Tool._TYPE.PUNCH_TO_RAGDOLL:
-			print("leave punched")
+			pass
 
 func can_wall_hanging():
 	if wall_hanging_possible_frame_count > 1:

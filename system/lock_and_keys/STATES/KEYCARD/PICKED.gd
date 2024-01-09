@@ -1,8 +1,8 @@
-extends HFSM_STATE
+extends BPBFSM_STATE
 
 
 func entering():
-	blackboard.model.hide()
+	model.hide()
 	blackboard.colshape.disabled = true
 	pass
 	

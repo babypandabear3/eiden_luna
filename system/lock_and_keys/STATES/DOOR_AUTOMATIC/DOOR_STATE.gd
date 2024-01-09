@@ -1,4 +1,4 @@
-extends HFSM_STATE
+extends BPBFSM_STATE
 
 
 func entering():

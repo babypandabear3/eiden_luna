@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://khwqv087wmf6"]
+
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/dialog.gd" id="1_hrk5k"]
+
+[node name="DIALOG" type="Node"]
+script = ExtResource("1_hrk5k")

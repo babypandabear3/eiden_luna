@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://hxt25njq22y5"]
+
+[ext_resource type="Script" path="res://system/bpbfsm/BASE_STATES/event.gd" id="1_sdsym"]
+
+[node name="EVENT" type="Node"]
+script = ExtResource("1_sdsym")

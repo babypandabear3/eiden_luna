@@ -2,7 +2,7 @@ class_name KeyCard
 extends World_Tool
 
 
-@onready var hfsm = $HFSM
+@onready var hfsm = $BPBFMS_MAIN
 @export var door_id : int = -1
 @export var keycard_color : int = 0
 # Called when the node enters the scene tree for the first time.
