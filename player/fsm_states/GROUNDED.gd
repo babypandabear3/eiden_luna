@@ -50,13 +50,11 @@ func working(_delta):
 		
 	if Input.is_action_just_pressed("attack_light"):
 		set_next_states_from_root(["GAMEPLAY", "COMBAT"])
-	#	blackboard["player_control_exit_to"] = "COMBAT"
 		blackboard["combat_attack_is_light"] = true
 	if Input.is_action_just_pressed("attack_heavy"):
 		set_next_states_from_root(["GAMEPLAY", "COMBAT"])
 		blackboard["combat_attack_is_light"] = false
-	#	blackboard["player_control_exit_to"] = "COMBAT"
-	#	blackboard["combat_selected_attack"] = "H0"
+
 		
 func exiting():
 	model.set_anim_speed(1.0)

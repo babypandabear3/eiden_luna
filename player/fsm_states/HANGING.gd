@@ -5,11 +5,13 @@ var sensor : PlayerSensor
 var in_state_timer = 0.0
 
 func entering():
+	body.fly_entering()
 	camera = get_viewport().get_camera_3d()
 	body.hanging_override(blackboard["hanging_direction"])
 	sensor = blackboard["sensor"]
 	model.play_anim("HANGING")
 	in_state_timer = 0.0
+	body.SPEED = 1.0
 	
 	
 func working(_delta):
@@ -53,5 +55,6 @@ func working(_delta):
 		
 
 func exiting():
+	body.walk_entering()
 	pass
 

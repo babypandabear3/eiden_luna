@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bsmude3h8vk6i"]
+[gd_scene load_steps=41 format=3 uid="uid://bsmude3h8vk6i"]
 
 [ext_resource type="Script" path="res://system/actor/body.gd" id="1_66flj"]
 [ext_resource type="Script" path="res://system/smooth_move/smooth_move.gd" id="2_2pq0h"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://besxjh8nxywkx" path="res://model/eiden/eiden_v4.tscn" id="4_j7ri1"]
 [ext_resource type="PackedScene" uid="uid://cg4dv43trrup4" path="res://player/sensors.tscn" id="5_es4sx"]
 [ext_resource type="Script" path="res://system/bpbfsm/bpbfsm_3d.gd" id="6_r5fkm"]
+[ext_resource type="Script" path="res://player/fsm_states/HANGING_ROTATE_RIGHT.gd" id="29_sr3hv"]
+[ext_resource type="Script" path="res://player/fsm_states/HANGING_ROTATE_LEFT.gd" id="30_2evw8"]
 [ext_resource type="Script" path="res://player/fsm_states/ROLL.gd" id="30_cmurc"]
 [ext_resource type="Script" path="res://player/fsm_states/HANGING_ENTER.gd" id="33_j0hlw"]
 [ext_resource type="Script" path="res://player/fsm_states/HANGING.gd" id="34_33dwm"]
@@ -153,6 +155,12 @@ script = ExtResource("36_dxyd5")
 
 [node name="HANGING_CLIMB_UP" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
 script = ExtResource("37_swf23")
+
+[node name="HANGING_ROTATE_RIGHT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
+script = ExtResource("29_sr3hv")
+
+[node name="HANGING_ROTATE_LEFT" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL/HANGING_ON_LEDGE"]
+script = ExtResource("30_2evw8")
 
 [node name="WALLRUN" type="Node" parent="BPBFMS_MAIN/GAMEPLAY/PLAYER_CONTROL"]
 script = ExtResource("38_k1cd5")

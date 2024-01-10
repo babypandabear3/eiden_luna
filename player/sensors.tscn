@@ -25,10 +25,28 @@ shape = SubResource("SphereShape3D_pt355")
 target_position = Vector3(0, 0, 1)
 collision_mask = 128
 
+[node name="ray_body_side_left" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, 0)
+target_position = Vector3(0, 0, 1)
+collision_mask = 128
+
+[node name="ray_body_side_right" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 0)
+target_position = Vector3(0, 0, 1)
+collision_mask = 128
+
 [node name="ray_head" type="RayCast3D" parent="sensor_wall_climb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 target_position = Vector3(0, 0, 1)
 collision_mask = 128
+
+[node name="ray_hanging_rotate_left" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+target_position = Vector3(-0.5, 0, 1)
+
+[node name="ray_hanging_rotate_right" type="RayCast3D" parent="sensor_wall_climb"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+target_position = Vector3(0.5, 0, 1)
 
 [node name="ray_top" type="RayCast3D" parent="sensor_wall_climb"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.5)

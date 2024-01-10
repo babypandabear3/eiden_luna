@@ -9,6 +9,12 @@ signal punched_to_ragdoll_entered
 @onready var ray_ledge_top : RayCast3D =  $sensor_ledge_hanging/ray_ledge_top
 @onready var ray_ledge_left : RayCast3D = $sensor_ledge_hanging/ray_ledge_left
 @onready var ray_ledge_right : RayCast3D = $sensor_ledge_hanging/ray_ledge_right
+
+@onready var ray_hanging_rotate_left : RayCast3D = $sensor_wall_climb/ray_hanging_rotate_left
+@onready var ray_hanging_rotate_right : RayCast3D = $sensor_wall_climb/ray_hanging_rotate_right
+@onready var ray_body_side_left : RayCast3D = $sensor_wall_climb/ray_body_side_left
+@onready var ray_body_side_right : RayCast3D = $sensor_wall_climb/ray_body_side_right
+
 @export var state_machine_path : NodePath
 
 @onready var wall_climb_ray_chest := $sensor_wall_climb/ray_chest
@@ -115,6 +121,21 @@ func ray_wall_climbing_left_colliding():
 func ray_wall_climbing_right_colliding():
 	return wall_climb_ray_right.is_colliding()
 
+func get_hanging_rotate_left_normal():
+	var ret = Vector3.ZERO
+	if ray_hanging_rotate_left.is_colliding():
+		ret = ray_hanging_rotate_left.get_collision_normal()
+	return ret
+	
+func get_hanging_rotate_right_normal():
+	var ret = Vector3.ZERO
+	if ray_hanging_rotate_right.is_colliding():
+		ret = ray_hanging_rotate_right.get_collision_normal()
+	return ret
 
 
-
+func is_ray_body_side_left_colliding():
+	return ray_body_side_left.is_colliding()
+	
+func is_ray_body_side_right_colliding():
+	return ray_body_side_right.is_colliding()
